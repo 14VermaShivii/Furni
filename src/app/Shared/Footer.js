@@ -1,14 +1,19 @@
+"use client"
+import { faFacebook, faInstagram, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
+
 export default function Footer() {
 	return (
 		<>
 
 			<footer className="footer-section">
 				<div className="container relative">
-
-					{/* <div className="sofa-img">
+			
+					<div className="sofa-img">
 						<img src="images/sofa.png" alt="Image" className="img-fluid" />
-					</div> */}
+					</div>
 
 					<div className="row">
 						<div className="col-lg-8">
@@ -24,7 +29,7 @@ export default function Footer() {
 									</div>
 									<div className="col-auto">
 										<button className="btn btn-primary">
-											<span className="fa fa-paper-plane"></span>
+											<span className="nav-link" href="#"><FontAwesomeIcon icon={faPaperPlane}/></span>
 										</button>
 									</div>
 								</form>
@@ -39,10 +44,10 @@ export default function Footer() {
 							<p className="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
 
 							<ul className="list-unstyled custom-social">
-								<li><Link href={"/"}><span className="fa fa-brands fa-facebook-f"></span></Link></li>
-								<li><Link href={"/"}><span className="fa fa-brands fa-twitter"></span></Link></li>
-								<li><Link href={"/"}><span className="fa fa-brands fa-instagram"></span></Link></li>
-								<li><Link href={"/"}><span className="fa fa-brands fa-linkedin"></span></Link></li>
+								<li><Link className="nav-link" href="#"><FontAwesomeIcon icon={faFacebook} /></Link></li>
+								<li><Link className="nav-link" href="#"><FontAwesomeIcon icon={faTwitter} /></Link></li>
+								<li><Link className="nav-link" href="#"><FontAwesomeIcon icon={faInstagram}/></Link></li>
+								<li><Link className="nav-link" href="#"><FontAwesomeIcon icon={faLinkedin}/></Link></li>
 							</ul>
 						</div>
 

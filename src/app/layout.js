@@ -1,3 +1,4 @@
+"use client"
 import { Inter } from "next/font/google";
 // import React from "react";
 import Image from "next/image";
@@ -10,7 +11,12 @@ import "bootstrap/dist/css/bootstrap.css"
 import BootstrapClient from "./Shared/BootstrapClient";
 import Header from "./Shared/Header";
 import Footer from "./Shared/Footer";
-import {FontAwesomeIcon} from "@fortawesome/fontawesome-free"
+
+import "@fortawesome/fontawesome-free"
+import '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/react-fontawesome';
+//************************* */
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
