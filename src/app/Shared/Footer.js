@@ -11,9 +11,9 @@ export default function Footer() {
 			<footer className="footer-section">
 				<div className="container relative">
 			
-					<div className="sofa-img">
+					{/* <div className="sofa-img">
 						<img src="images/sofa.png" alt="Image" className="img-fluid" />
-					</div>
+					</div> */}
 
 					<div className="row">
 						<div className="col-lg-8">

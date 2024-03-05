@@ -14,8 +14,8 @@ export default function Blog() {
 								<p><a href="" className="btn btn-secondary me-2">Shop Now</a><a href="#" className="btn btn-white-outline">Explore</a></p>
 							</div>
 						</div>
-						<div className="col-lg-6">
-							<div className="hero-img-wrap">
+						<div className="col-lg-7">
+							<div className="hero-img-wrap">                
 								<img src="images/blog6.jpg" className="img-fluid"/>
 							</div>
 						</div>
