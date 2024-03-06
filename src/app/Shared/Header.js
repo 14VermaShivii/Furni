@@ -37,6 +37,7 @@ export default function Header() {
                             <li><Link className="nav-link" href={"/tech"}>Tech</Link></li>
                             <li><Link className="nav-link" href={"/travel"}>Travel</Link></li>
                             <li><Link className="nav-link" href={"/contact"}>Contact</Link></li>
+                            <li><Link className="nav-link" href={"/profile"}>Profile</Link></li>
 
                         </ul>
 

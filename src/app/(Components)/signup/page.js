@@ -1,5 +1,5 @@
 import Link from 'next/link';
-export default function login() {
+export default function signup() {
     return(
         <>
         <div className="wrapper">
@@ -15,9 +15,19 @@ export default function login() {
                 <input type="text" name="userName" id="userName" placeholder="Username"/>
             </div>
             <div className="form-field d-flex align-items-center">
+                <span className="far fa-user"></span>
+                <input type="text" name="lastName" id="lastName" placeholder="Lastname"/>
+            </div>
+            <div className="form-field d-flex align-items-center">
+                <span className="far fa-user"></span>
+                <input type="text" name="email" id="email" placeholder="Email"/>
+            </div>
+            <div className="form-field d-flex align-items-center">
                 <span className="fas fa-key"></span>
                 <input type="password" name="password" id="pwd" placeholder="Password"/>
             </div>
+           
+            
             <button className="btn mt-3">Login</button>
         </form>
         <div className="text-center fs-6">

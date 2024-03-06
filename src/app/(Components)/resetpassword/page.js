@@ -1,5 +1,5 @@
 import Link from 'next/link';
-export default function login() {
+export default function resetpassword() {
     return(
         <>
         <div className="wrapper">
@@ -12,11 +12,11 @@ export default function login() {
         <form className="p-3 mt-3">
             <div className="form-field d-flex align-items-center">
                 <span className="far fa-user"></span>
-                <input type="text" name="userName" id="userName" placeholder="Username"/>
+                <input type="text" name="newPassword" id="newPassword" placeholder="Newpassword"/>
             </div>
             <div className="form-field d-flex align-items-center">
                 <span className="fas fa-key"></span>
-                <input type="password" name="password" id="pwd" placeholder="Password"/>
+                <input type="password" name="conformPassword" id="pwd" placeholder="Conformpassword"/>
             </div>
             <button className="btn mt-3">Login</button>
         </form>
