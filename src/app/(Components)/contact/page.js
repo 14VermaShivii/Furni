@@ -16,7 +16,7 @@ export default function contact() {
             </div>
             <div className="col-lg-7">
               <div className="hero-img-wrap">
-                <img src="images/couch.png" className="img-fluid" />
+                <img src="images/Contact.png" className="img-fluid" />
               </div>
             </div>
           </div>

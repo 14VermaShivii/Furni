@@ -1,3 +1,5 @@
+import Testimonial from "../Testimonial/page";
+
 export default function Blog() {
     return (
      <>
@@ -16,7 +18,7 @@ export default function Blog() {
 						</div>
 						<div className="col-lg-7">
 							<div className="hero-img-wrap">                
-								<img src="images/blog6.jpg" className="img-fluid"/>
+								<img src="images/Blog.png" className="img-fluid"/>
 							</div>
 						</div>
 					</div>
@@ -155,7 +157,7 @@ export default function Blog() {
 		{/* <!-- End Blog Section -->	 */}
 
 		
-
+<Testimonial />
 		 {/* Start Testimonial Slider  */}
 		<div className="testimonial-section before-footer-section">
 			<div className="container">

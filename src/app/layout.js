@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import "./globals.css";
 // import "../app/globals.css"
-import Head from "./head";
+
 import "bootstrap/dist/css/bootstrap.css"
 import BootstrapClient from "./Shared/BootstrapClient";
 import Header from "./Shared/Header";
@@ -27,7 +27,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head />
+      
       <body className={inter.className}>
       <Header />
         {children}
