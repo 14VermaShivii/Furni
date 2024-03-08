@@ -114,6 +114,7 @@ export default function contact() {
                   <button type="submit" className="btn btn-primary-hover-outline">Send Message</button>
                 </form>
 
+
               </div>
 
             </div>

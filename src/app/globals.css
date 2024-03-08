@@ -821,11 +821,12 @@ body {
   margin: 7px;
   border: 1px #000 solid;
   font-size: 1.2rem;
-  padding: 10px 15px 10px 10px;
+  padding: 5px 10px 5px 10px;
   position: absolute;
   background-color: #3b5d50;
   border-radius: 15px;
-  width: 100%;
+  width: 50%;
+  z-index: 99999;
    
   /* width: 100%;
   border-radius: 15px;
@@ -911,4 +912,7 @@ body {
   color: #fff;
   cursor: pointer;
   border: solid 1px #BA68C8
+}
+.Testimonal{
+  width: 10%;
 }
