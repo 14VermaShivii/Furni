@@ -20,7 +20,8 @@ export default function Header() {
     }
     return (
         <>
-            <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation bar">
+            <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation
+             bar">
 
                 <div className="container">
                     <Link className="navbar-brand" href={"/"}>Furni<span>.</span></Link>

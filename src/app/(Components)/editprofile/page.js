@@ -1,14 +1,41 @@
+"use client"
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import profilepic from "../../../../public/images/girl.jpg"
+import Image from "next/image";
+import blogpic from "../../../../public/images/blogging1.jpg"
+
 export default function editblog() {
+    const [profile, setProfile] = useState(profilepic)
+    const handleInputChange = (event) => {
+        setProfile(URL.createObjectURL(event.target.files[0]));
+ 
+    }
     return (
         <>
+            <div className="Container">
+                <div className="col-lg-12">
+                    <img src={profilepic} className="img-fluid" />
+                </div>
 
+                <button type="button" className=" btn btn-primary btnn">Change Picture</button>
+
+            </div>
             <div className="container rounded bg-white mt-5 mb-5">
                 <div className="row">
                     <div className="col-md-3 border-right">
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img className="rounded-circle mt-5"
-                             width="150px" 
-                             src="./images/girl.jpg" /><span className="font-weight-bold">Shivii</span><span className="text-black-50">shivii@mail.com.my</span><span> </span></div>
+                            <Image className="rounded-circle mt-5"
+                                width={100}
+                                height={100}
+                                src={profile} />
+                            <input type="file" className="d-none" onChange={handleInputChange} id="profileimage" />
+                            <label htmlFor="profileimage"><FontAwesomeIcon icon={faPlus} /></label>
+
+                            <br />
+                            <span className="font-weight-bold">Shivii</span>
+                            <span className="text-black-50">shivii@mail.com.my</span><span> </span></div>
                     </div>
                     <div className="col-md-5 border-right">
                         <div className="p-3 py-5">
@@ -17,40 +44,40 @@ export default function editblog() {
                             </div>
                             <div className="row mt-2">
                                 <div className="col-md-6"><label className="labels">Name</label>
-                                <input type="text" className="form-control" placeholder="first name" /></div>
+                                    <input type="text" className="form-control" placeholder="first name" /></div>
                                 <div className="col-md-6"><label className="labels">Surname</label>
-                                <input type="text" className="form-control" value="" placeholder="surname" /></div>
+                                    <input type="text" className="form-control" value="" placeholder="surname" /></div>
                             </div>
                             <div className="row mt-3">
                                 <div className="col-md-12"><label className="labels">Mobile Number</label>
                                     <input type="text" className="form-control"
-                                     placeholder="enter phone number"/></div>
+                                        placeholder="enter phone number" /></div>
                                 <div className="col-md-12"><label className="labels">Address</label>
-                                <input type="text" className="form-control" 
-                                placeholder="enter your address"/></div>
-                               
+                                    <input type="text" className="form-control"
+                                        placeholder="enter your address" /></div>
+
                                 <div className="col-md-12"><label className="labels">Pincode</label>
-                                <input type="text" className="form-control"
-                                 placeholder="enter pincode number"/></div>
-                               
+                                    <input type="text" className="form-control"
+                                        placeholder="enter pincode number" /></div>
+
                                 <div className="col-md-12"><label className="labels">Email ID</label>
-                                <input type="text" className="form-control" placeholder="enter email id" />
+                                    <input type="text" className="form-control" placeholder="enter email id" />
                                 </div>
                                 <div className="col-md-12"><label className="labels">Education</label>
-                                <input type="text" className="form-control" placeholder="education" />
-                                
-                                    </div>
+                                    <input type="text" className="form-control" placeholder="education" />
+
+                                </div>
                             </div>
                             <div className="row mt-3">
                                 <div className="col-md-6"><label className="labels">Country</label>
-                                <input type="text" className="form-control" placeholder="country"/></div>
+                                    <input type="text" className="form-control" placeholder="country" /></div>
                                 <div className="col-md-6"><label className="labels">State/Region</label>
-                                <input type="text" className="form-control" value="" placeholder="state" />
+                                    <input type="text" className="form-control" value="" placeholder="state" />
                                 </div>
                             </div>
                             <div className="mt-5 text-center">
-                                <button className="btn btn-primary profile-button" 
-                                type="button">Save Profile</button></div>
+                                <button className="btn btn-primary profile-button"
+                                    type="button">Save Profile</button></div>
                         </div>
                     </div>
                     {/* <div className="col-md-4">
@@ -69,3 +96,5 @@ export default function editblog() {
         </>
     )
 }
+
+
