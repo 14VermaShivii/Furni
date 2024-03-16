@@ -1,3 +1,5 @@
+import React from 'react';
+import "bootstrap/dist/css/bootstrap.css";
 import Link from 'next/link';
 export default function login() {
     return(

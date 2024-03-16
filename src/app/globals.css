@@ -917,8 +917,15 @@ body {
 .Testimonal{
   width: 10%;
 }
-.btnn{
-  padding-top: 100px;
-  margin-left:50;
-  text-align: center;  
+.container-fluid.btnn{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  font-size: 1.3em;
+  height: 100px;
+  width: 100px;
+  top: 20%;
+  left: 50%;
+  background-color:#3b5d50;
+  cursor: pointer;
 }

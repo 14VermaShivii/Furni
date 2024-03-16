@@ -4,22 +4,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import profilepic from "../../../../public/images/girl.jpg"
 import Image from "next/image";
-import blogpic from "../../../../public/images/blogging1.jpg"
+import timelinepic from "../../../../public/images/blogging1.jpg"
 
 export default function editblog() {
     const [profile, setProfile] = useState(profilepic)
     const handleInputChange = (event) => {
         setProfile(URL.createObjectURL(event.target.files[0]));
- 
     }
+        const [timeline,setTimeline] = useState(timelinepic)
+        const timelineChange = (event) => {
+                setTimeline(URL.createObjectURL(event.target.files[0]));
+        }
     return (
         <>
             <div className="Container">
-                <div className="col-lg-12">
-                    <img src={profilepic} className="img-fluid" />
-                </div>
+                
+                    <Image className="mt-5 text-center"
+                    width={1500}
+                    height={400}
+                        src={timeline} />
+                   
+                    <input type="file" className="d-none" onChange={timelineChange} id="timelineimage" />
+                    <label htmlFor="timelineimage">
+                        <div className=" container-fluid text-center btnn">
+                        <button type="button" className=" img-fluid btn btn-primary profile-button" />Change Picture
+                        </div>
+                        </label>
+                        
 
-                <button type="button" className=" btn btn-primary btnn">Change Picture</button>
+               
 
             </div>
             <div className="container rounded bg-white mt-5 mb-5">
@@ -30,7 +43,8 @@ export default function editblog() {
                                 width={100}
                                 height={100}
                                 src={profile} />
-                            <input type="file" className="d-none" onChange={handleInputChange} id="profileimage" />
+                            <input type="file" className="d-none" onChange={handleInputChange}
+                             id="profileimage" />
                             <label htmlFor="profileimage"><FontAwesomeIcon icon={faPlus} /></label>
 
                             <br />
