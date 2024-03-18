@@ -929,3 +929,6 @@ body {
   background-color:#3b5d50;
   cursor: pointer;
 }
+.form-error{
+  color: red;
+}

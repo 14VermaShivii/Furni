@@ -53,7 +53,7 @@ export default function Header() {
                                 <Link className="nav-link" href={"/profile"}>Profile</Link></li>
   </ul>
                         <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
-                            <li><Link className="nav-link" href={"/loginnn"}>
+                            <li><Link className="nav-link" href={"/login"}>
                                 <img src="images/user.svg" /></Link></li>
 
                             <li><button className="nav-link" onClick={toggle}><FontAwesomeIcon
