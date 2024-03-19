@@ -7,10 +7,10 @@ import { signupschema } from '@/app/schemas';
 
 export default function signup() {
     const initialValues = {
-        firstname:"",
-        lastname:"",
-        email:"",
-        password:""
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: ""
     };
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
         useFormik({
@@ -44,10 +44,11 @@ export default function signup() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.firstname && touched.firstname ? (
-                            <p className="form-error">{errors.firstname}</p>
-                        ) : null}
                     </div>
+                    {errors.firstname && touched.firstname ? (
+                        <p className="form-error">{errors.firstname}</p>
+                    ) : null}
+
                     <div className="form-field d-flex align-items-center">
                         <label htmlFor="lastname" className="input-label"></label>
                         <input
@@ -60,11 +61,12 @@ export default function signup() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.lastname && touched.lastname ? (
-                            <p className="form-error">{errors.lastname}</p>
-                        ) : null}
-
                     </div>
+                    {errors.lastname && touched.lastname ? (
+                        <p className="form-error">{errors.lastname}</p>
+                    ) : null}
+
+
                     <div className="form-field d-flex align-items-center">
                         <label htmlFor="email" className="input-label"></label>
                         <input

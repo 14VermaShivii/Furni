@@ -19,7 +19,7 @@ export default function editblog() {
         <>
             <div className="Container">
                 
-                    <Image className="mt-5 text-center"
+                    <Image className="text-center"
                     width={1500}
                     height={400}
                         src={timeline} />

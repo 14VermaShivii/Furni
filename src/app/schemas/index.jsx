@@ -15,3 +15,11 @@ export const signupschema=Yup.object({
     email: Yup.string().min(2).max(25).required("Please enter your email"),
     password:Yup.string().min(6).required("please enter your password")
 })
+export const changepasswordschema=Yup.object({
+    email: Yup.string().min(2).max(25).required("Please enter your email"),
+    password:Yup.string().min(6).required("please enter your password")
+})
+export const resetpasswordschema =Yup.object({
+    newpassword:Yup.string().min(6).required("please enter your password"),
+    confirmpassword:Yup.string().min(6).required("please enter your password")
+})

@@ -37,6 +37,10 @@ export default function Header() {
                                 <Link className="nav-link" href={"/"}>Home</Link></li>
                             <li className={pathname === "/blog" ? "active" : " "}>
                                 <Link className="nav-link" href={"/blog"}>Blog</Link></li>
+
+                            <li className={pathname === "/details" ? "active" : " "}>
+                                <Link className="nav-link" href={"/details"}>Details</Link></li>
+
                             <li className={pathname === "/fashion" ? "active" : " "}>
                                 <Link className="nav-link" href={"/fashion"}>Fashion</Link></li>
                             <li className={pathname === "/lifestyle" ? "active" : " "}>
@@ -51,6 +55,7 @@ export default function Header() {
                                 <Link className="nav-link" href={"/contact"}>Contact</Link></li>
                             <li className={pathname === "/profile" ? "active" : " "}>
                                 <Link className="nav-link" href={"/profile"}>Profile</Link></li>
+                               
   </ul>
                         <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
                             <li><Link className="nav-link" href={"/login"}>
