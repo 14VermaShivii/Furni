@@ -23,7 +23,7 @@ export default function Header() {
             <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation
              bar">
 
-                <div className="container">
+                <div className="container-fluid">
                     <Link className="navbar-brand" href={"/"}>Furni<span>.</span></Link>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">

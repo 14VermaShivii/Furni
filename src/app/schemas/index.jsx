@@ -23,3 +23,9 @@ export const resetpasswordschema =Yup.object({
     newpassword:Yup.string().min(6).required("please enter your password"),
     confirmpassword:Yup.string().min(6).required("please enter your password")
 })
+
+export const createblogschema = Yup.object({
+    Blogtitle:Yup.string().min(6).required("please enter your Blogtitle name"),
+    Blogdescription:Yup.string().min(8).required("please enter your Blogdescription") , 
+    category:Yup.string().min(3).required("please enter your category")
+})

@@ -30,7 +30,10 @@ export default function details() {
 
                     </div>
                    < div className="container">
+                    <h1><b> future of e-learning? </b></h1>
+<h5>E-learning is here to stay. As computer ownership grows across the globe e-learning becomes increasingly viable and accessible. Internet connection speeds are increasing, and with that, opportunities for more multimedia training methods arise.<br/>
 
+With the immense improvement of mobile networks in the past few years and the increase in telecommuting, taking all the awesome features of e-learning on the road is a reality with smartphones and other portable devices. Technologies such as social media are also transforming education constantly.</h5>
 
 
                    </div>
