@@ -2,7 +2,8 @@
 import { Inter } from "next/font/google";
 // import React from "react";
 import Image from "next/image";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./globals.css";
 // import "../app/globals.css"
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         {children}
         <BootstrapClient />
       <Footer />
+      <ToastContainer />
         </body>
     </html>
   );
