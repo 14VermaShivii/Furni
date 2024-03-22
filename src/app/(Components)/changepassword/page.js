@@ -4,10 +4,14 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useFormik } from 'formik';
 import { changepasswordschema } from '@/app/schemas';
 import Link from 'next/link';
+import {toast} from 'react-toastify';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 export default function changepassword() {
+    const router = useRouter()
     const initialValues = {
-        email: "",
-        password: ""
+        oldpassword: "",
+        newpassword: ""
     };
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
         useFormik({
@@ -17,7 +21,29 @@ export default function changepassword() {
 
             onSubmit: (values, action) => {
                 console.log(values);
-                action.resetForm();
+                let config = {
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url: 'http://localhost:7000/api/auth/login',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: values
+                };
+        
+                axios.request(config)
+                .then((response) => {
+                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                    router.push("/profile")
+                    // NextResponse.redirect("profile")
+                    action.resetForm();
+                })
+                .catch((error) => {
+                        toast.error(error.response.data.message,{theme: "dark"});
+                        const returnUrl = '/profile';
+                        router.push(returnUrl);
+                    });
+                
             },
         });
     return (
@@ -31,36 +57,36 @@ export default function changepassword() {
                 </div>
                 <form onSubmit={handleSubmit} className="p-3 mt-3">
                     <div className="form-field d-flex align-items-center">
-                        <label htmlFor="email" className="input-label"></label>
+                        <label htmlFor="oldpassword" className="input-label"></label>
                         <input
-                            type="email"
+                            type="oldpassword"
                             autoComplete="off"
-                            name="email"
-                            id="email"
-                            placeholder="email"
-                            value={values.email}
+                            name="oldpassword"
+                            id="oldpassword"
+                            placeholder="oldpassword"
+                            value={values.oldpassword}
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
                     </div>
-                    {errors.email && touched.email ? (
-                        <p className="form-error">{errors.email}</p>
+                    {errors.oldpassword && touched.oldpassword ? (
+                        <p className="form-error">{errors.oldpassword}</p>
                     ) : null}
 
 
                     <div className="form-field d-flex align-items-center">
                         <span className="fas fa-key"></span>
-                        <input type="password"
+                        <input type="newpassword"
                             autoComplete="off"
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                            value={values.password}
+                            name="newpassword"
+                            id="newpassword"
+                            placeholder="newPassword"
+                            value={values.newpassword}
                             onChange={handleChange}
                             onBlur={handleBlur} />
                     </div>
-                    {errors.password && touched.password ? (
-                        <p className="form-error">{errors.password}</p>
+                    {errors.newpassword && touched.newpassword ? (
+                        <p className="form-error">{errors.newpassword}</p>
                     ) : null}
 
 

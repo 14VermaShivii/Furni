@@ -4,8 +4,12 @@ import Link from 'next/link';
 import "bootstrap/dist/css/bootstrap.css"
 import { useFormik } from 'formik';
 import { signupschema } from '@/app/schemas';
+import axios from "axios";
+import { toast } from "react-toastify"; 
+import { useRouter } from "next/navigation";
 
 export default function signup() {
+    const router =useRouter()
     const initialValues = {
         firstname: "",
         lastname: "",
@@ -19,7 +23,29 @@ export default function signup() {
 
             onSubmit: (values, action) => {
                 console.log(values);
-                action.resetForm();
+                let config = {
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url: 'http://localhost:7000/api/auth/register',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: values
+                };
+        
+        
+                axios.request(config)
+                .then((response) => {
+                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                    
+                    // NextResponse.redirect("profile")
+                    action.resetForm();
+                })
+                .catch((error) => {
+                    toast.error(error.response.data.message,{theme: "dark"});
+                    
+                });
+                
             },
         });
     return (

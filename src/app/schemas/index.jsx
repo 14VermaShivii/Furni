@@ -6,18 +6,18 @@ import * as Yup from "yup";
 })
 
 export const forgotpasswordschema=Yup.object({
-    email: Yup.string().min(2).max(25).required("Please enter your email"),
+    email: Yup.string().min(2).required("Please enter your email"),
 })
 
 export const signupschema=Yup.object({
     firstname: Yup.string().min(2).max(25).required("Please enter your name"),
-    lastname:Yup.string().min(6).required("please enter your lastname"),
-    email: Yup.string().min(2).max(25).required("Please enter your email"),
+    lastname:Yup.string().min(4).required("please enter your lastname"),
+    email: Yup.string().min(2).required("Please enter your email"),
     password:Yup.string().min(6).required("please enter your password")
 })
 export const changepasswordschema=Yup.object({
-    email: Yup.string().min(2).max(25).required("Please enter your email"),
-    password:Yup.string().min(6).required("please enter your password")
+    oldpassword: Yup.string().min(2).required("Please enter your oldpassword"),
+    newpassword:Yup.string().min(6).required("please enter your newpassword")
 })
 export const resetpasswordschema =Yup.object({
     newpassword:Yup.string().min(6).required("please enter your password"),

@@ -104,19 +104,21 @@ export default function createblog() {
                                         <div className="col-md-12"><label className="labels"><h4><b>category</b></h4></label>
 
 
-                                            <input
-
-                                                type="text"
-                                                autoComplete="off"
-                                                name="category"
-                                                className="form-control"
-                                                id="category"
-                                                placeholder="category"
-                                                value={values.category}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-
-                                            />
+                                         
+                                            <select className="form-select" name="category" 
+                                             autoComplete="off"
+                                            id="category"
+                                            placeholder="category"
+                                            value={values.category}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}>
+                                                <option value="">select category</option>
+                                                <option value="fashion">Fashion</option>
+                                                <option value="food">Food</option>
+                                                <option value="travel">Travel</option>
+                                                <option value="lifestyle">Lifestyle</option>
+                                                <option value="tech">Tech</option>
+                                            </select>
 
                                         </div>
                                         {errors.category && touched.category ? (

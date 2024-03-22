@@ -59,7 +59,7 @@ export default function Header() {
   </ul>
                         <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
                             <li><Link className="nav-link" href={"/login"}>
-                                <img src="images/user.svg" /></Link></li>
+                                <img src="./images/user.svg" /></Link></li>
 
                             <li><button className="nav-link" onClick={toggle}><FontAwesomeIcon
                                 icon={faMagnifyingGlass} /></button>
