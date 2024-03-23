@@ -15,7 +15,7 @@ export default function login() {
         email: "",
         password: ""
     };
-
+//validation
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
         useFormik({
             initialValues: initialValues,
@@ -23,7 +23,7 @@ export default function login() {
 
             onSubmit: (values, action) => {
                 console.log(values);
-                let config = {
+                let config = {                   //api
                     method: 'post',
                     maxBodyLength: Infinity,
                     url: 'http://localhost:7000/api/auth/login',
@@ -37,6 +37,8 @@ export default function login() {
                 axios.request(config)
                 .then((response) => {
                     toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                    localStorage.setItem('authtoke',response.data.token)
+                    // localStorage.getItem('authtoken')
                     router.push("/profile")
                     // NextResponse.redirect("profile")
                     action.resetForm();

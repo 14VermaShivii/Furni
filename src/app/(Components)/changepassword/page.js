@@ -40,8 +40,8 @@ export default function changepassword() {
                 })
                 .catch((error) => {
                         toast.error(error.response.data.message,{theme: "dark"});
-                        const returnUrl = '/profile';
-                        router.push(returnUrl);
+                        // const returnUrl = '/profile';
+                        // router.push(returnUrl);
                     });
                 
             },

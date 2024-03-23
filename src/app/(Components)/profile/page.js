@@ -34,7 +34,8 @@ export default function profile() {
                         </div> */}
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <Link className="btn btn-primary me-md-2" href={"/createblog"}>+CreateBlog</Link>
-                            <Link className="btn btn-primary" href={"/changepassword"}>Changepassword</Link>
+                            <Link className="btn btn-primary" href={"/changepassword"}>Changepassword
+                            </Link>
                         </div>
 
 
@@ -48,7 +49,10 @@ export default function profile() {
                         </div>
                         <div className="py-4 px-4">
                             <div className="d-flex align-items-center justify-content-between mb-3">
-                                <h5 className="mb-0">Recent photos</h5><a href="#" className="btn btn-link text-muted">Show all</a>
+                                {/* <h5 className="mb-0">Recent photos</h5><a href="#"
+                                 className="btn btn-link text-muted">Show all</a> */}
+                                 <Link className="btn btn-primary" href={"/profile/myblogs"}>All Blogs
+                            </Link>
                             </div> <div className="row">
                                 <div className="col-lg-6 mb-2 pr-lg-1">
                                     <img src="images/blogging1.jpg" alt="" className="img-fluid rounded shadow-sm" />

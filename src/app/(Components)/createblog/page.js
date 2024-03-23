@@ -2,23 +2,27 @@
 import React from "react"
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css"
-
 import { useFormik } from "formik"
 import { createblogschema } from "@/app/schemas"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import profilepic from "../../../../public/images/girl.jpg"
 import Image from "next/image";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 
 export default function createblog() {
+    const router=useRouter()
     const [profile, setProfile] = useState(profilepic)
     const handleInputChange = (event) => {
         setProfile(URL.createObjectURL(event.target.files[0]));
+
+        
+
+       
     }
-
-
     const initialValues = {
         Blogtitle: "",
         Blogdescription: "",
@@ -33,7 +37,30 @@ export default function createblog() {
 
             onSubmit: (values, action) => {
                 console.log(values);
-                action.resetForm();
+                let config = {                   //api
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url: 'http://localhost:7000/api/Blog/create',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: values
+                };
+                axios.request(config)
+                .then((response) => {
+                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                    localStorage.setItem('authtoke',response.data.token)
+                    // localStorage.getItem('authtoken')
+                
+                    // NextResponse.redirect("profile")
+                    action.resetForm();
+                })
+                .catch((error) => {
+                        toast.error(error.response.data.message,{theme: "dark"});
+                       
+                    });
+
+               
             },
         });
     return (
@@ -104,14 +131,14 @@ export default function createblog() {
                                         <div className="col-md-12"><label className="labels"><h4><b>category</b></h4></label>
 
 
-                                         
-                                            <select className="form-select" name="category" 
-                                             autoComplete="off"
-                                            id="category"
-                                            placeholder="category"
-                                            value={values.category}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}>
+
+                                            <select className="form-select" name="category"
+                                                autoComplete="off"
+                                                id="category"
+                                                placeholder="category"
+                                                value={values.category}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}>
                                                 <option value="">select category</option>
                                                 <option value="fashion">Fashion</option>
                                                 <option value="food">Food</option>
@@ -127,7 +154,7 @@ export default function createblog() {
 
                                         <div className="mt-5 text-center">
                                             <button className="btn btn-primary profile-button"
-                                                type="button">Save Profile</button></div>
+                                                type="submit">Save Profile</button></div>
                                     </div>
                                 </div>
 

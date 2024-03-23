@@ -2,6 +2,8 @@
 import React from "react";
 import { useState } from "react"
 import DataTable from "react-data-table-component"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash ,faPencil } from "@fortawesome/free-solid-svg-icons";
 
 export default function Myblogs() {
     const columns = [
@@ -19,6 +21,11 @@ export default function Myblogs() {
             name: 'category',
             selector: row => row.category,
             sortable: true
+        },
+        {
+            name: 'action',
+            selector:row =>row.action,
+            sortable:true
         }
     ];
     const data = [
@@ -26,7 +33,9 @@ export default function Myblogs() {
             id: 1,
             blogTitle: 'World Sports Day',
             blogdescription: 'In this blog we will discuss sports around the World',
-            category: 'sports'
+            category: 'sports',
+            action:<FontAwesomeIcon icon={faPencil} />,
+            // <FontAwesomeIcon icon={faTrash} />
         },
         {
             id: 2,
