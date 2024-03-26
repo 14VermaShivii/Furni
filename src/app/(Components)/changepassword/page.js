@@ -24,7 +24,7 @@ export default function changepassword() {
                 let config = {
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/auth/login',
+                    url: 'http://localhost:7000/api/user/change-password',
                     headers: {
                         'Content-Type': 'application/json'
                     },

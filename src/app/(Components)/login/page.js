@@ -9,13 +9,13 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 export default function login() {
-    const router=useRouter()
+    const router = useRouter()
     // const notify = () => toast("Wow so easy!");
     const initialValues = {
         email: "",
         password: ""
     };
-//validation
+    //validation
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
         useFormik({
             initialValues: initialValues,
@@ -32,23 +32,23 @@ export default function login() {
                     },
                     data: values
                 };
-        
-        
+
+
                 axios.request(config)
-                .then((response) => {
-                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
-                    localStorage.setItem('authtoke',response.data.token)
-                    // localStorage.getItem('authtoken')
-                    router.push("/profile")
-                    // NextResponse.redirect("profile")
-                    action.resetForm();
-                })
-                .catch((error) => {
-                        toast.error(error.response.data.message,{theme: "dark"});
+                    .then((response) => {
+                        toast.success(response.data.message, { position: "top-center", theme: "dark" });
+                        localStorage.setItem('authToken', response.data.token)      //token
+                        // localStorage.getItem('authtoken')
+                        router.push("/profile")
+                        // NextResponse.redirect("profile")
+                        action.resetForm();
+                    })
+                    .catch((error) => {
+                        toast.error(error.response.data.message, { theme: "dark" });
                         const returnUrl = '/profile';
                         router.push(returnUrl);
                     });
-            
+
             },
         });
 
@@ -57,6 +57,7 @@ export default function login() {
             <div className="wrapper">
                 <div className="logo">
                     <img src="./images/profile2.jpg" alt="" />
+
                 </div>
                 <div className="text-center mt-4 name">
                     Furni
