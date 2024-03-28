@@ -8,6 +8,9 @@ import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+// import Myblogs from "../(Components)/profile/myblogs/page";
+import myblogs from "../(Components)/profile/myblogs/page";
+import profile from "../(Components)/profile/page";
 
 
 
@@ -90,8 +93,8 @@ export default function Header() {
                                 </a>
 
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a className="dropdown-item" href="#">myblogs</a></li>
-                                    <li><a className="dropdown-item" onClick={logout}>Logout</a></li>
+                                    <li><Link className="dropdown-item" href={"/profile/myblogs"}>My blogs</Link></li>
+                                    <li><Link className="dropdown-item" href={"/logout"}>Logout</Link></li>
                                   
                                 </ul>
                             </div>
