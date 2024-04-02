@@ -1,12 +1,30 @@
 "use client"
 import React from "react";
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import DataTable from "react-data-table-component"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash ,faPencil } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
+
 export default function myblogs() {
+    const deleteblog = (e) => {
+        const id = e.currentTarget.getAttribute("data-id")
+        console.log(id, "delete call")
+        try {
+            let res = axios({
+                method: 'delete',
+                url: deleteUrl + '/' + id
+            });
+        } catch (error) {
+            console.log(error.response);
+            return error.response;
+        }
+    }
+
+    // useEffect(() => {
+    //     myblogs()
+    // }, []);
     const columns = [
         {
             name: 'blogTitle',
@@ -25,33 +43,36 @@ export default function myblogs() {
         },
         {
             name: 'action',
-            selector:row =>row.action,
-            sortable:true,
-            cell:row =>
-            <div> <FontAwesomeIcon icon={faPencil}/> <FontAwesomeIcon icon={faTrash}/></div>
-           
+            selector: row => row.action,
+            sortable: true,
+            cell: row =>
+                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash} /></div>
+
         }
     ];
+
+
+
     const [data, setData] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () =>{
-      
-      try {
-        const response = await axios.get('http://localhost:7000/api/blog/getallblog');
-        console.log(response.data.blogs)
+    useEffect(() => {
+        const fetchData = async () => {
 
-        setData(response.data.blogs);
-      } catch (error) {
-        console.error(error.message);
-      }
-     
-    }
+            try {
+                const response = await axios.get('http://localhost:7000/api/blog/getallblog');
+                console.log(response.data.blogs)
 
-    fetchData();
-  }, []);
+                setData(response.data.blogs);
+            } catch (error) {
+                console.error(error.message);
+            }
 
-  
+        }
+
+        fetchData();
+    }, []);
+
+
 
     // const data = [
     //     {
@@ -90,15 +111,15 @@ export default function myblogs() {
     // ]
     const [records, setRecords] = useState(data)
     function handleFilter(event) {
-        const newData = data.filter(row =>{
+        const newData = data.filter(row => {
             return row.name.tolowerCase().includes(event.target.value.tolowerCase())
         })
         setRecords(newData)
-     }
+    }
     return (
         <>
             <div className="container mt-5">
-                <div className="text-end"><input type="text"   onChange={handleFilter} /></div>
+                <div className="text-end"><input type="text" onChange={handleFilter} /></div>
                 <DataTable columns={columns}
                     data={data}
                     selectableRows

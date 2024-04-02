@@ -26,8 +26,6 @@ export default function Header() {
         setIsOpened(wasOpened => !wasOpened);
     }
 
-
-
     useEffect(() => {
         const getToken = localStorage.getItem("authToken");
 
