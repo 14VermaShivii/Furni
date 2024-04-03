@@ -1,10 +1,42 @@
+"use client"
+import React from "react";
+import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
+import axios from "axios";
 
 export default function Travel() {
-    return (
-     <>
-     
-     {/* <!-- Start Hero Section --> */}
+
+	const [travelData, setTravelData] = useState(null);
+	const [errormsg, setErrormsg] = useState()
+	useEffect(() => {
+
+		const getTravelList = async () => {
+
+			const url = 'http://localhost:7000/api/blog/getallBlog?category=travel';
+
+			try {
+				const response = await axios({
+					method: 'get',
+					url: url
+				}).then((res) => {
+					console.log(res.data.blogs)
+					setTravelData(res.data.blogs)
+				})
+
+			} catch (err) {
+				setErrormsg(err.response.data.message)
+				console.error(errormsg);
+			}
+		};
+
+		getTravelList();
+	}, [errormsg]);
+
+
+	return (
+		<>
+
+			{/* <!-- Start Hero Section --> */}
 			<div className="hero">
 				<div className="container">
 					<div className="row justify-content-between">
@@ -17,149 +49,51 @@ export default function Travel() {
 						</div>
 						<div className="col-lg-7">
 							<div className="hero-img-wrap">
-								<img src="images/Teavel.png" className="img-fluid"/>
+								<img src="images/Teavel.png" className="img-fluid" />
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		{/* <!-- End Hero Section --> */}
+			{/* <!-- End Hero Section --> */}
 
-		
 
-		{/* <!-- Start Blog Section --> */}
-		<div className="blog-section">
-			<div className="container">
-				
-				<div className="row">
 
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-1.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+			{/* <!-- Start Blog Section --> */}
+			<div className="blog-section">
+				<div className="container">
+
+					<div className="row">
+						{travelData ? travelData.map((travel, index) => {
+
+							return (
+								<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
+									<div className="post-entry">
+										<a href="#" className="post-thumbnail"><img src="./images/travel1.jpg" alt="Image"
+											className="img-fluid" /></a>
+										<div className="post-content-entry">
+											<h3><a href="#">{travel.blogTitle}</a></h3>
+											<h3>{travel.blogDescripton}</h3>
+											<div className="meta">
+												<span>by <a href="#"></a></span> <span>on <a href="#">April 3, 2024</a></span>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					</div>
+							)
+						}) : <div className="alert alert-danger">{errormsg} </div>}
 
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-2.jpg" alt="Image"
-               className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-3.jpg" alt="Image"
-               className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
 					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-1.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-2.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-3.jpg" alt="Image"
-               className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-1.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">First Time Home Owner Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-2.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="col-12 col-sm-6 col-md-4 mb-5">
-						<div className="post-entry">
-							<a href="#" className="post-thumbnail"><img src="images/post-3.jpg" alt="Image" 
-              className="img-fluid"/></a>
-							<div className="post-content-entry">
-								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-								<div className="meta">
-									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-								</div>
-							</div>
-						</div>
-					</div>
-
 				</div>
 			</div>
-		</div>
-		{/* <!-- End Blog Section -->	 */}
-
-		
-
-		<Testimonal />
+			{/* <!-- End Blog Section -->	 */}
 
 
-     </>
-    );
-  }
+
+			<Testimonal />
+
+
+		</>
+	);
+}

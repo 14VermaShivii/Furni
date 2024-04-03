@@ -8,7 +8,7 @@ import axios from "axios";
 
 export default function Tech() {
 
-	const [techData, setTechData] = useState([]);
+	const [techData, setTechData] = useState(null);
 	const getTechList = async () => {
 
 		const url = 'http://localhost:7000/api/blog/getallBlog?category=tech';
@@ -23,6 +23,7 @@ export default function Tech() {
 			})
 
 		} catch (err) {
+			setTechData(res.data.blogs)
 			console.error(err);
 		}
 
@@ -67,18 +68,19 @@ export default function Tech() {
 							return (
 								<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
 									<div className="post-entry">
-										<a href="#" className="post-thumbnail"><img src="images/post-1.jpg" alt="Image"
+										<a href="#" className="post-thumbnail"><img src="./images/tech1.jpg" alt="Image"
 											className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">First Time Home Owner Ideas</a></h3>
+											<h3><a href="#">{tech.blogTitle}</a></h3>
+											<h3>{tech.blogDescripton}</h3>
 											<div className="meta">
-												<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+												<span>by <a href="#"></a></span> <span>on <a href="#">April 3, 2024</a></span>
 											</div>
 										</div>
 									</div>
 								</div>
 							)
-						}) : <div className="alert alert-danger"><h3>No Blogs</h3> </div>}
+						}) : <div className="alert alert-danger">{setTechData} <h4>No Blogs</h4> </div>}
 					</div>
 				</div>
 			</div>
