@@ -85,14 +85,17 @@ export default function Header() {
                         <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
                             {/* <li><Link className="nav-link" href={"/login"}>
                                 <img src="./images/user.svg" /></Link></li> */}
-                            {!Islogin ? <li><Link className="nav-link" href={"/login"}><img src="./images/user.svg" /></Link></li> : <div class="dropdown">
-                                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            {!Islogin ? <li><Link className="nav-link" href={"/login"}>
+                                <img src="./images/user.svg" /></Link></li> : <div class="dropdown">
+                                <a className="btn btn-secondary dropdown-toggle"
+                                 href="#" role="button" id="dropdownMenuLink" 
+                                 data-bs-toggle="dropdown" aria-expanded="false">
                                     Shivani
                                 </a>
 
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><Link className="dropdown-item" href={"/profile/myblogs"}>My blogs</Link></li>
-                                    <li><Link className="dropdown-item" href={"/logout"}>Logout</Link></li>
+                                    <li><Link className="dropdown-item" href="/profile/myblogs">My blogs</Link></li>
+                                    <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
                                   
                                 </ul>
                             </div>

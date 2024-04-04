@@ -6,33 +6,41 @@ import axios from "axios";
 
 
 
+
 export default function Tech() {
 
 	const [techData, setTechData] = useState(null);
-	const getTechList = async () => {
-
-		const url = 'http://localhost:7000/api/blog/getallBlog?category=tech';
-
-		try {
-			const response = await axios({
-				method: 'get',
-				url: url
-			}).then((res) => {
-				console.log(res.data.blogs)
-				setTechData(res.data.blogs)
-			})
-
-		} catch (err) {
-			setTechData(res.data.blogs)
-			console.error(err);
-		}
-
-	};
-
+	const [errormsg, setErrormsg] = useState()
+	const URL=process.env.BASE_URL
+			console.log(URL)
 	useEffect(() => {
+		const getTechList = async () => {
+
+			const url = `${URL}blog/getallBlog?category=tech`;
+
+
+			// const url = '/api/blog/getallBlog?category=tech';
+
+			try {
+				const response = await axios({
+					method: 'get',
+					url: url
+				}).then((res) => {
+					console.log(res.data.blogs)
+					setTechData(res.data.blogs)
+				})
+
+			} catch (err) {
+				setErrormsg(err.response.data.message)
+				console.error(errormsg);
+			}
+			
+		};
+
+
 
 		getTechList();
-	}, []);
+	}, [errormsg]);
 
 	return (
 		<>
@@ -80,7 +88,7 @@ export default function Tech() {
 									</div>
 								</div>
 							)
-						}) : <div className="alert alert-danger">{setTechData} <h4>No Blogs</h4> </div>}
+						}) : <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
 					</div>
 				</div>
 			</div>

@@ -7,9 +7,13 @@ import axios from "axios";
 export default function Lifestyle() {
 
 	const [lifestyleData, setLifestyleData] = useState(null);
+	const [errormsg, setErrormsg]=useState()
+	const URL=process.env.BASE_URL
+			console.log(URL)
+	useEffect(() => {
 	const getLifestyleList = async () => {
 
-		const url = 'http://localhost:7000/api/blog/getallBlog?category=lifestyle';
+		const url = `${URL}blog/getallBlog?category=lifestyle`;
 
 		try {
 			const response = await axios({
@@ -21,16 +25,16 @@ export default function Lifestyle() {
 			})
 
 		} catch (err) {
-			setLifestyleData(res.data.blogs)
-			console.error(err);
+			setErrormsg(err.response.data.message)
+			console.error(errormsg);
 		}
 
 	};
 
-	useEffect(() => {
+	
 
 		getLifestyleList();
-	}, []);
+	}, [errormsg]);
 
 
 	return (
@@ -79,7 +83,7 @@ export default function Lifestyle() {
 									</div>
 								</div>
 							)
-						}) : <div className="alert alert-danger">{setLifestyleData} <h4>No Blogs</h4> </div>}
+						}) : <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
 
 					</div>
 				</div>

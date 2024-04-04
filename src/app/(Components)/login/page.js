@@ -101,7 +101,8 @@ export default function login() {
                     {/* <button onClick={notify}>Notify!</button> */}
                 </form>
                 <div className="text-center fs-6">
-                    <Link href={"/forgotpassword"}>Forget password?</Link> or <Link href={"/signup"}>Sign up</Link>
+                    <Link href={"/forgotpassword"}>Forget password?</Link> or 
+                    <Link href={"/signup"}>Sign up</Link>
                 </div>
             </div>
 

@@ -8,11 +8,13 @@ export default function Travel() {
 
 	const [travelData, setTravelData] = useState(null);
 	const [errormsg, setErrormsg] = useState()
+	const URL=process.env.BASE_URL
+			console.log(URL)
 	useEffect(() => {
 
 		const getTravelList = async () => {
 
-			const url = 'http://localhost:7000/api/blog/getallBlog?category=travel';
+			const url = `${URL}blog/getallBlog?category=travel`;
 
 			try {
 				const response = await axios({
