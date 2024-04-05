@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
+import moment from "moment";
 
 export default function Lifestyle() {
 
@@ -77,7 +78,8 @@ export default function Lifestyle() {
 											<h3><a href="#">{lifestyle.blogTitle}</a></h3>
 											<h3>{lifestyle.blogDescripton}</h3>
 											<div className="meta">
-												<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+												<span>by <a href="#"></a></span> 
+												<span>on <a href="#">{moment( lifestyle.createDate).format('LL')}</a></span>
 											</div>
 										</div>
 									</div>

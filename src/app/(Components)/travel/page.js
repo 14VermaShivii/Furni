@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
+import moment from "moment";
 
 export default function Travel() {
 
@@ -77,7 +78,8 @@ export default function Travel() {
 											<h3><a href="#">{travel.blogTitle}</a></h3>
 											<h3>{travel.blogDescripton}</h3>
 											<div className="meta">
-												<span>by <a href="#"></a></span> <span>on <a href="#">April 3, 2024</a></span>
+												<span>by <a href="#"></a></span> 
+												<span>on <a href="#">{moment( travel.createDate).format('LL')}</a></span>
 											</div>
 										</div>
 									</div>
