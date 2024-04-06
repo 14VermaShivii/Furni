@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
+import Link from "next/link";
 
 export default function Tech() {
 
@@ -67,7 +68,7 @@ export default function Tech() {
 
 					<div className="row">
 						{techData ? techData.map((tech, index) => {
-							
+
 
 							return (
 								<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
@@ -76,11 +77,12 @@ export default function Tech() {
 											<img src="./images/tech1.jpg" alt="Image"
 												className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">{tech.blogTitle}</a></h3>
+											<h3><Link href={`blogs/${tech._id}`}>{tech.blogTitle}</Link></h3>
+
 											<h3>{tech.blogDescripton}</h3>
 											<div className="meta">
 												<span>by <a href="#"></a></span> <span>on
-													<a href="#">{moment( tech.createDate).format('LL')}
+													<a href="#">{moment(tech.createDate).format('LL')}
 													</a></span>
 
 											</div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
+import Link from "next/link";
 
 
 export default function Blogs() {
@@ -84,7 +85,7 @@ export default function Blogs() {
 											<img src="./images/details1.jpg" alt="Image"
 												className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">{blog.blogTitle}</a></h3>
+											<h3><Link href={`blogs/${blog._id}`}>{blog.blogTitle}</Link></h3>
 											<h3><a href="#">{blog.blogDescription}</a></h3>
 											<div className="meta">
 												<span>by <a href="#"></a></span>

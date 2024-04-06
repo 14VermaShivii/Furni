@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
+import Link from "next/link";
 
 export default function Fashion() {
 
@@ -81,7 +82,7 @@ const URL=process.env.BASE_URL
 										<a href="#" className="post-thumbnail"><img src="./images/fashion1.jpg" alt="Image"
 											className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">{fashion.blogTitle}</a></h3>
+											<h3><Link href={`blogs/${fashion._id}`}>{fashion.blogTitle}</Link></h3>
 											<h3>{fashion.blogDescripton}</h3>
 											<div className="meta">
 												<span>by <a href="#"></a></span> 

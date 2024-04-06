@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
+import Link from "next/link";
 
 export default function Lifestyle() {
 
@@ -75,7 +76,7 @@ export default function Lifestyle() {
 									<div className="post-entry">
 										<a href="#" className="post-thumbnail"><img src="./images/lifestyle1.jpg" alt="Image" className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">{lifestyle.blogTitle}</a></h3>
+											<h3><Link href={`blogs/${lifestyle._id}`}>{lifestyle.blogTitle}</Link></h3>
 											<h3>{lifestyle.blogDescripton}</h3>
 											<div className="meta">
 												<span>by <a href="#"></a></span> 

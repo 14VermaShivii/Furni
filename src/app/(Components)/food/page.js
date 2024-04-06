@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
+import Link from "next/link";
 
 export default function Food() {
 
@@ -78,7 +79,7 @@ export default function Food() {
 										<a href="#" className="post-thumbnail"><img src="./images/food1.jpg" alt="Image"
 											className="img-fluid" /></a>
 										<div className="post-content-entry">
-											<h3><a href="#">{food.blogTitle}</a></h3>
+											<h3><Link href={`blogs/${food._id}`}>{food.blogTitle}</Link></h3>
 											<h3>{food.blogDescripton}</h3>
 											<div className="meta">
 												<span>by <a href="#"></a></span>

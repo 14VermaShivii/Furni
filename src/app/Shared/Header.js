@@ -63,8 +63,8 @@ export default function Header() {
                             <li className={pathname === "/blog" ? "active" : " "}>
                                 <Link className="nav-link" href={"/blogs"}>Blogs</Link></li>
 
-                            <li className={pathname === "/details" ? "active" : " "}>
-                                <Link className="nav-link" href={"/details"}>Details</Link></li>
+                            {/* <li className={pathname === "/details" ? "active" : " "}>
+                                <Link className="nav-link" href={"/details"}>Details</Link></li> */}
 
                             <li className={pathname === "/fashion" ? "active" : " "}>
                                 <Link className="nav-link" href={"/fashion"}>Fashion</Link></li>
