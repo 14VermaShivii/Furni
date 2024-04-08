@@ -3,8 +3,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
-import moment from "moment";
-import Link from "next/link";
+import Blogdata from "@/app/Shared/Blogdata";
+// import moment from "moment";
+// import Link from "next/link";
+// import LoaderComp from "@/app/loader";
+// import Blogdata from "@/app/Shared/Blogdata";
+
 
 export default function Tech() {
 
@@ -13,6 +17,10 @@ export default function Tech() {
 	const URL = process.env.BASE_URL
 	console.log(URL)
 
+	// const [isLoading, setIsLoading] = useState(true);
+	// setTimeout(() => {
+	//     setIsLoading(false);
+	// }, 2000);
 
 	useEffect(() => {
 		const getTechList = async () => {
@@ -25,11 +33,13 @@ export default function Tech() {
 				}).then((res) => {
 					console.log(res.data.blogs)
 					setTechData(res.data.blogs)
+					setIsLoading(false)
 				})
 
 			} catch (err) {
 				setErrormsg(err.response.data.message)
 				console.error(errormsg);
+				setIsLoading(false)
 			}
 
 		};
@@ -40,6 +50,7 @@ export default function Tech() {
 
 	return (
 		<>
+
 
 			{/* <!-- Start Hero Section --> */}
 			<div className="hero">
@@ -63,40 +74,54 @@ export default function Tech() {
 			{/* <!-- End Hero Section --> */}
 
 			{/* <!-- Start Blog Section --> */}
-			<div className="blog-section">
-				<div className="container">
+			{/* <div className="blog-section">
+				<div className="container"> */}
 
-					<div className="row">
-						{techData ? techData.map((tech, index) => {
+			<Blogdata />
+			{/* {isLoading ? (
+						<div
+							style={{
+								width: "100px",
+								margin: "auto",
+							}}
+						>
+							<LoaderComp />
+						</div>
+					) : (
 
 
-							return (
-								<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
-									<div className="post-entry">
-										<a href="#" className="post-thumbnail">
-											<img src="./images/tech1.jpg" alt="Image"
-												className="img-fluid" /></a>
-										<div className="post-content-entry">
-											<h3><Link href={`blogs/${tech._id}`}>{tech.blogTitle}</Link></h3>
+						<div className="row">
+							{techData ? techData.map((tech, index) => {
 
-											<h3>{tech.blogDescripton}</h3>
-											<div className="meta">
-												<span>by <a href="#"></a></span> <span>on
-													<a href="#">{moment(tech.createDate).format('LL')}
-													</a></span>
 
+								return (
+									<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
+										<div className="post-entry">
+											<a href="#" className="post-thumbnail">
+												<img src="./images/tech1.jpg" alt="Image"
+													className="img-fluid" /></a>
+											<div className="post-content-entry">
+												<h3><Link href={`blogs/${tech._id}`}>{tech.blogTitle}</Link></h3>
+
+												<h3>{tech.blogDescripton}</h3>
+												<div className="meta">
+													<span>by <a href="#"></a></span> <span>on
+														<a href="#">{moment(tech.createDate).format('LL')}
+														</a></span>
+
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
 
-							)
-						}) : <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
-					</div>
-				</div>
-			</div>
+								)
+							}) : <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
+						</div>
+					)} */}
+			{/* </div>
+			</div> */}
 			{/* <!-- End Blog Section -->	 */}
-
+			<Blogdata Blogdata={techData} />
 			<Testimonal />
 
 

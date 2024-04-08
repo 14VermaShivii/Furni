@@ -35,7 +35,7 @@ export default function editblog() {
                
 
             </div>
-            <div className="container rounded bg-white mt-5 mb-5">
+            < form  className="container rounded bg-white mt-5 mb-5">
                 <div className="row">
                     <div className="col-md-3 border-right">
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -60,7 +60,7 @@ export default function editblog() {
                                 <div className="col-md-6"><label className="labels">Name</label>
                                     <input type="text" className="form-control" placeholder="first name" /></div>
                                 <div className="col-md-6"><label className="labels">Surname</label>
-                                    <input type="text" className="form-control" value="" placeholder="surname" /></div>
+                                    <input type="text" className="form-control"  placeholder="surname" /></div>
                             </div>
                             <div className="row mt-3">
                                 <div className="col-md-12"><label className="labels">Mobile Number</label>
@@ -86,12 +86,12 @@ export default function editblog() {
                                 <div className="col-md-6"><label className="labels">Country</label>
                                     <input type="text" className="form-control" placeholder="country" /></div>
                                 <div className="col-md-6"><label className="labels">State/Region</label>
-                                    <input type="text" className="form-control" value="" placeholder="state" />
+                                    <input type="text" className="form-control"  placeholder="state" />
                                 </div>
                             </div>
                             <div className="mt-5 text-center">
                                 <button className="btn btn-primary profile-button"
-                                    type="button">Save Profile</button></div>
+                                    type="submit">Save Profile</button></div>
                         </div>
                     </div>
                     {/* <div className="col-md-4">
@@ -102,7 +102,7 @@ export default function editblog() {
                         </div>
                     </div> */}
                 </div>
-            </div>
+            </form>
 
 
 
