@@ -2,6 +2,7 @@
 import Link from "next/link"
 import React, { useEffect } from 'react';
 import { useState } from "react";
+import axios from "axios"
 // import Image from "next/image";
 // import styles from "./page.module.css";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -20,16 +21,50 @@ export default function Header() {
 
     const pathname = usePathname()
     // console.log(pathname)
-
     const [isOpened, setIsOpened] = useState(false);
+    // const [isdisabled, setDisabled] = useState(true)
+    const URL=process.env.BASE_URL
+    const[errormsg,setErrormsg]=useState()
+    const [enable,setEnable]=useState(true)
+    const[value, setValue] = useState()
+const search=async()=>{
+    console.log("search working")
+    const url=`${URL}blog/search?q=${value}`
+    try{
+        const response =await axios({
+            method:'get',
+            url:url
+        }).then((res)=>{
+            console.log(res)
+        });
+    }catch(error){
+        setErrormsg(error)
+        console.log(error)
+    }
+};
+    const handleChange=(event)=>{
+        // console.log(event.target.value)
+        const len=event.target.value
+        // console.log(event.target.value)
+        if(len.length>=2){
+            setValue(len)
+            setEnable(false)
+        }
+        else{
+            setEnable(true)
+            setValue(len)
+        }
+        // console.log(value,"Actual value")
+    }
+
     function toggle() {
         setIsOpened(wasOpened => !wasOpened);
-    }
+    };
 
     useEffect(() => {
         const getToken = localStorage.getItem("authToken");
 
-        console.log(getToken)
+        // console.log(getToken)
         if (getToken) {
             setIslogin(true)
         }
@@ -38,7 +73,7 @@ export default function Header() {
         }
     });
     //logout
-    const router=useRouter()
+    const router = useRouter()
     function logout() {
         localStorage.removeItem("authToken")
         router.push("/")
@@ -88,15 +123,15 @@ export default function Header() {
                             {!Islogin ? <li><Link className="nav-link" href={"/login"}>
                                 <img src="./images/user.svg" /></Link></li> : <div class="dropdown">
                                 <a className="btn btn-secondary dropdown-toggle"
-                                 href="#" role="button" id="dropdownMenuLink" 
-                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                    href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Shivani
                                 </a>
 
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><Link className="dropdown-item" href="/profile/myblogs">My blogs</Link></li>
                                     <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
-                                  
+
                                 </ul>
                             </div>
                             }
@@ -118,9 +153,16 @@ export default function Header() {
                     <div className="container-fluid">
                         <div className="container search">
                             <div className="row ">
-                                <div className="col-md-11">
+                                <div className="col-md-10">
 
-                                    <input type="search" className="img-fluid form-control rounded-pill rounded-circle" placeholder="Search.." />
+                                    <input type="search" onChange={handleChange} className="img-fluid form-control rounded-pill rounded-circle" placeholder="Search.." aria-label="Search" onKeyDown={e=>{
+                                        if(e.key==="Enter"){
+                                            router.push(`/search/?q=${decodeURIComponent(value)}`)
+                                        }
+                                    }} />
+                                </div>
+                                <div className="col-md-1">
+                                   <button onClick={search} disabled={enable} className="onclick btn btn-primary">search</button>
                                 </div>
                                 <div className="col-md-1">
                                     <button className="nav-link" onClick={toggle}><FontAwesomeIcon

@@ -5,6 +5,7 @@ import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
+import Blogdata from "@/app/Shared/Blogdata";
 
 export default function Lifestyle() {
 
@@ -94,7 +95,7 @@ export default function Lifestyle() {
 			{/* <!-- End Blog Section -->	 */}
 
 
-
+			<Blogdata Blogdata={lifestyleData} />
 			<Testimonal />
 
 

@@ -5,6 +5,7 @@ import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
+import Blogdata from "@/app/Shared/Blogdata";
 
 export default function Fashion() {
 
@@ -100,7 +101,7 @@ const URL=process.env.BASE_URL
 			{/* <!-- End Blog Section -->	 */}
 
 
-
+			<Blogdata Blogdata={fashionData} />
 			<Testimonal />
 		</>
 	);

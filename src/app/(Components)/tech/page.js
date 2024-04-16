@@ -17,6 +17,7 @@ export default function Tech() {
 	const URL = process.env.BASE_URL
 	console.log(URL)
 
+
 	// const [isLoading, setIsLoading] = useState(true);
 	// setTimeout(() => {
 	//     setIsLoading(false);
@@ -33,13 +34,13 @@ export default function Tech() {
 				}).then((res) => {
 					console.log(res.data.blogs)
 					setTechData(res.data.blogs)
-					setIsLoading(false)
+					// setIsLoading(false)
 				})
 
 			} catch (err) {
-				setErrormsg(err.response.data.message)
+				setErrormsg(err?.response?.data?.message)
 				console.error(errormsg);
-				setIsLoading(false)
+				// setIsLoading(false)
 			}
 
 		};

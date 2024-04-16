@@ -5,6 +5,7 @@ import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
+import Blogdata from "@/app/Shared/Blogdata";
 
 export default function Food() {
 
@@ -98,7 +99,7 @@ export default function Food() {
 			{/* <!-- End Blog Section -->	 */}
 
 
-
+			<Blogdata Blogdata={foodData} />
 			<Testimonal />
 
 		</>
