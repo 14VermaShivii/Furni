@@ -31,7 +31,7 @@ const search=async()=>{
     console.log("search working")
     const url=`${URL}blog/search?q=${value}`
     try{
-        const response =await axios({
+        const response = await axios({
             method:'get',
             url:url
         }).then((res)=>{

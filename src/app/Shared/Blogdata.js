@@ -1,14 +1,17 @@
+"use client"
 import moment from "moment";
 import Link from "next/link";
 import LoaderComp from "@/app/loader";
 
 import { useEffect, useState } from "react";
+import { Readmore } from "./Readmore";
 export default function Blogdata(props) {
     
     console.log("props data")
     const [isLoading, setIsLoading] = useState(true);
     const [getData,setgetData]=useState()
     const [getError,setgetError ]=useState(props.errorData)
+    const[isVisible,setVisible]=useState(true)
     useEffect(()=>{
         setgetData(props.Blogdata)
         if(getData){
@@ -45,7 +48,8 @@ export default function Blogdata(props) {
                                         <div className="post-content-entry">
                                             <h3><Link href={`blogs/${data._id}`}>{data.blogTitle}</Link></h3>
 
-                                            <h3>{data.blogDescripton}</h3>
+                                            {isVisible ? <Readmore text={data.blogDescripton}
+                                             maxelength={35} /> :<> </>}
                                             <div className="meta">
                                                 <span>by <a href="#"></a></span> <span>on
                                                     <a href="#">{moment(data.createDate).format('LL')}
