@@ -6,6 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
 import Blogdata from "@/app/Shared/Blogdata";
+import fashionimage from "../../../../public/images/fashion1.jpg"
 
 export default function Fashion() {
 
@@ -47,7 +48,7 @@ const URL=process.env.BASE_URL
 
 
 
-			{/* <!-- Start Hero Section --> */}
+			
 			<div className="hero">
 				<div className="container">
 					<div className="row justify-content-between">
@@ -66,42 +67,9 @@ const URL=process.env.BASE_URL
 					</div>
 				</div>
 			</div>
-			{/* <!-- End Hero Section --> */}
+		
 
-
-
-			{/* <!-- Start Blog Section --> */}
-			<div className="blog-section">
-				<div className="container">
-
-					<div className="row">
-						{ fashionData ? fashionData.map((fashion, index) => {
-
-							return (
-								<div key={index}className="col-12 col-sm-6 col-md-4 mb-5">
-									<div className="post-entry">
-										<a href="#" className="post-thumbnail"><img src="./images/fashion1.jpg" alt="Image"
-											className="img-fluid" /></a>
-										<div className="post-content-entry">
-											<h3><Link href={`blogs/${fashion._id}`}>{fashion.blogTitle}</Link></h3>
-											<h3>{fashion.blogDescripton}</h3>
-											<div className="meta">
-												<span>by <a href="#"></a></span> 
-												<span>on <a href="#">{moment( fashion.createDate).format('LL')}</a></span>
-											</div>
-										</div>
-									</div>
-								</div>
-							)
-						}):  <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
-
-					</div>
-				</div>
-			</div>
-			{/* <!-- End Blog Section -->	 */}
-
-
-			<Blogdata Blogdata={fashionData} />
+			<Blogdata Blogdata={fashionData} errorData={errormsg} imageData={fashionimage}/>
 			<Testimonal />
 		</>
 	);

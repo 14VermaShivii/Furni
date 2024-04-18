@@ -5,18 +5,24 @@ import LoaderComp from "@/app/loader";
 
 import { useEffect, useState } from "react";
 import { Readmore } from "./Readmore";
+
 export default function Blogdata(props) {
     
     console.log("props data")
     const [isLoading, setIsLoading] = useState(true);
+    
     const [getData,setgetData]=useState()
-    const [getError,setgetError ]=useState(props.errorData)
+    const [getError,setgetError ]=useState()
     const[isVisible,setVisible]=useState(true)
     useEffect(()=>{
         setgetData(props.Blogdata)
-        if(getData){
+        setgetError(props.errorData)
+        if(getData||getError){
             setIsLoading(false)
         }
+        // else{
+        //     setIsLoading(true)
+        // }
     })
     console.log(getData,'error')
     return (
@@ -42,13 +48,13 @@ export default function Blogdata(props) {
                             return (
                                 <div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
                                     <div className="post-entry">
-                                        <a href="#" className="post-thumbnail">
-                                            <img src="./images/tech1.jpg" alt="Image"
-                                                className="img-fluid" /></a>
+                                        <Link href="#" className="post-thumbnail">
+                                            <img src={props?.imageData?.src} alt="Image"
+                                                className="img-fluid" /></Link>
                                         <div className="post-content-entry">
                                             <h3><Link href={`blogs/${data._id}`}>{data.blogTitle}</Link></h3>
 
-                                            {isVisible ? <Readmore text={data.blogDescripton}
+                                            {isVisible ? <Readmore text={data?.blogDescripton}
                                              maxelength={35} /> :<> </>}
                                             <div className="meta">
                                                 <span>by <a href="#"></a></span> <span>on

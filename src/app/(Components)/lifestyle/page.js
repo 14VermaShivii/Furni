@@ -6,6 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
 import Blogdata from "@/app/Shared/Blogdata";
+import lifestyleimage from "../../../../public/images/lifestyle1.jpg"
 
 export default function Lifestyle() {
 
@@ -67,7 +68,7 @@ export default function Lifestyle() {
 
 
 			{/* <!-- Start Blog Section --> */}
-			<div className="blog-section">
+			{/* <div className="blog-section">
 				<div className="container">
 
 					<div className="row">
@@ -91,11 +92,11 @@ export default function Lifestyle() {
 
 					</div>
 				</div>
-			</div>
+			</div> */}
 			{/* <!-- End Blog Section -->	 */}
 
 
-			<Blogdata Blogdata={lifestyleData} />
+			<Blogdata Blogdata={lifestyleData} errorData={errormsg} imageData={lifestyleimage}/>
 			<Testimonal />
 
 

@@ -121,7 +121,7 @@ const search=async()=>{
                             {/* <li><Link className="nav-link" href={"/login"}>
                                 <img src="./images/user.svg" /></Link></li> */}
                             {!Islogin ? <li><Link className="nav-link" href={"/login"}>
-                                <img src="./images/user.svg" /></Link></li> : <div class="dropdown">
+                                <img src="./images/user.svg" /></Link></li> : <div className="dropdown">
                                 <a className="btn btn-secondary dropdown-toggle"
                                     href="#" role="button" id="dropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-expanded="false">
