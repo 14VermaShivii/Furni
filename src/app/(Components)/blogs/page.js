@@ -3,8 +3,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
-import moment from "moment";
-import Link from "next/link";
+// import moment from "moment";
+// import Link from "next/link";
+import Blogdata from "@/app/Shared/Blogdata";
 
 
 export default function Blogs() {
@@ -70,7 +71,7 @@ export default function Blogs() {
 
 
 			{/* <!-- Start Blog Section --> */}
-			<div className="blog-section">
+			{/* <div className="blog-section">
 				<div className="container">
 
 					<div className="row">
@@ -79,21 +80,21 @@ export default function Blogs() {
 
 							return (
 
-								<div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
-									<div className="post-entry">
-										<a href="#" className="post-thumbnail">
-											<img src="./images/details1.jpg" alt="Image"
-												className="img-fluid" /></a>
-										<div className="post-content-entry">
-											<h3><Link href={`blogs/${blog._id}`}>{blog.blogTitle}</Link></h3>
-											<h3><a href="#">{blog.blogDescription}</a></h3>
-											<div className="meta">
-												<span>by <a href="#"></a></span>
-												 <span>on <a href="#">{moment( blog.createDate).format('LL')}</a></span>
-											</div>
-										</div>
-									</div>
-								</div>
+								// <div key={index} className="col-12 col-sm-6 col-md-4 mb-5">
+								// 	<div className="post-entry">
+								// 		<a href="#" className="post-thumbnail">
+								// 			<img src="./images/details1.jpg" alt="Image"
+								// 				className="img-fluid" /></a>
+								// 		<div className="post-content-entry">
+								// 			<h3><Link href={`blogs/${blog._id}`}>{blog.blogTitle}</Link></h3>
+								// 			<h3><a href="#">{blog.blogDescription}</a></h3>
+								// 			<div className="meta">
+								// 				<span>by <a href="#"></a></span>
+								// 				 <span>on <a href="#">{moment( blog.createDate).format('LL')}</a></span>
+								// 			</div>
+								// 		</div>
+								// 	</div>
+								// </div>
 							)
 							}): <div className="alert alert-danger"> <h4>{errormsg}</h4> </div>}
 
@@ -101,10 +102,10 @@ export default function Blogs() {
 					</div>
 				</div>
 
-			</div>
+			</div> */}
 			{/* <!-- End Blog Section -->	 */}
 
-
+			<Blogdata Blogdata={allblog} errorData={errormsg} />
 			<Testimonal />
 
 

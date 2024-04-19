@@ -7,7 +7,7 @@ import Link from 'next/link';
 import {toast} from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-export default function changepassword() {
+export default function Changepassword() {
     const router = useRouter()
     const initialValues = {
         oldpassword: "",

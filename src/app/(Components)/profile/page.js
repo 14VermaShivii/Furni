@@ -19,19 +19,7 @@ export default function profile() {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="bg-light p-4 d-flex justify-content-end text-center">
-                            <ul className="list-inline mb-0"> <li className="list-inline-item">
-                                <h5 className="font-weight-bold mb-0 d-block">215</h5><small className="text-muted">
-                                    <i className="fas fa-image mr-1"></i>Photos</small> </li> <li className="list-inline-item">
-                                    <h5 className="font-weight-bold mb-0 d-block">745</h5>
-                                    <small className="text-muted">
-                                        <i className="fas fa-user mr-1">
-                                        </i>Followers</small> </li>
-                                <li className="list-inline-item">
-                                    <h5 className="font-weight-bold mb-0 d-block">340</h5><small className="text-muted">
-                                        <i className="fas fa-user mr-1"></i>Following</small> </li>
-                            </ul>
-                        </div> */}
+                        
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <Link className="btn btn-primary me-md-2" href={"/createblog"}>+CreateBlog</Link>
                             <Link className="btn btn-primary" href={"/changepassword"}>Changepassword

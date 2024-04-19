@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function blogpage({  params}) {
+export default function Blogpage({  params}) {
     return (
         <>
             <div className="blog-section">

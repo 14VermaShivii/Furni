@@ -19,11 +19,6 @@ export default function Tech() {
 	console.log(URL)
 
 
-	// const [isLoading, setIsLoading] = useState(true);
-	// setTimeout(() => {
-	//     setIsLoading(false);
-	// }, 2000);
-
 	useEffect(() => {
 		const getTechList = async () => {
 
