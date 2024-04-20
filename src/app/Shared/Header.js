@@ -21,7 +21,7 @@ export default function Header() {
 
     const pathname = usePathname()
     // console.log(pathname)
-    const [isOpened, setIsOpened] = useState(false);
+    const [isOpened, setIsOpened] = useState();
     // const [isdisabled, setDisabled] = useState(true)
     const URL=process.env.BASE_URL
     const[errormsg,setErrormsg]=useState()

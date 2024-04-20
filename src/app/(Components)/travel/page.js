@@ -6,7 +6,7 @@ import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
 import Blogdata from "@/app/Shared/Blogdata";
-import travelimage from "../../../../public/images/travel1.jpg"
+// import travelimage from "../../../../public/images/travel1.jpg"
 
 export default function Travel() {
 
@@ -97,7 +97,7 @@ export default function Travel() {
 			{/* <!-- End Blog Section -->	 */}
 
 
-			<Blogdata Blogdata={travelData} errorData={errormsg} imageData={travelimage}/>
+			<Blogdata Blogdata={travelData} errorData={errormsg} />
 			<Testimonal />
 
 

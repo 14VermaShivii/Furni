@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Testimonal from "@/app/Shared/Testimonal";
 import axios from "axios";
 import Blogdata from "@/app/Shared/Blogdata";
-import techimage from "../../../../public/images/tech1.jpg"
+// import techimage from "../../../../public/images/tech1.jpg"
 // import moment from "moment";
 // import Link from "next/link";
 // import LoaderComp from "@/app/loader";
@@ -118,7 +118,7 @@ export default function Tech() {
 			{/* </div>
 			</div> */}
 			{/* <!-- End Blog Section -->	 */}
-			<Blogdata Blogdata={techData} errorData={errormsg} imageData={techimage}/>
+			<Blogdata Blogdata={techData} errorData={errormsg} />
 			<Testimonal />
 
 

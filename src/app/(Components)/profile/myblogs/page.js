@@ -116,6 +116,12 @@ export default function myblogs() {
         })
         setRecords(newData)
     }
+//     fetch('https://example.com/delete-item/' + id, {
+//   method: 'DELETE',
+// })
+// .then(res => res.text()) // or res.json()
+// .then(res => console.log(res))
+
     return (
         <>
             <div className="container mt-5">
