@@ -6,25 +6,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
+const deleteUrl=`${URL}blog/deleteBlog`
+export default function Myblogs() {
+    const URL = process.env.BASE_URL
+    console.log(URL)
 
-export default function myblogs() {
-    const deleteblog = (e) => {
-        const id = e.currentTarget.getAttribute("data-id")
-        console.log(id, "delete call")
+    async function getMyBlogs() {
+        console.log("my function")
         try {
-            let res = axios({
-                method: 'delete',
-                url: deleteUrl + '/' + id
+            const res = await axios({
+                method: 'get',
+                url: URL
             });
+            console.log(res.data.blogs)
+            let data = res.data;
+            setData(res.data.blogs)
+
+
         } catch (error) {
-            console.log(error.response);
+            console.error(error.response);
             return error.response;
         }
     }
-   
-    // useEffect(() => {
-    //     myblogs()
-    // }, []);
+
+    const deleteBlog = async (e) => {
+        console .log("deleteblog")
+        // const id = e.currentTarget.getAttribute("data-id")
+        // console.log(id, "Blog id")
+        //     .then((result) => {
+        //         (result.isConfirmed)
+        //         console.log(id, 'function 1')
+        //         try {
+        //             let response = axios.delete(`${URL}blog/deleteBlog/${id}`)
+        //             console.log("post deleted:", id);
+        //          setData(data.filter((post) => post.id !== id));
+        //         //  getMyBlogs()
+        //         } catch (error) {
+        //             console.log(error, "Error message")
+        //             console.error("Error deleting post :", error);
+        //         }
+
+        //     })
+    }
+    useEffect(() =>{
+        getMyBlogs()
+    },[])
+
+
+
+
     const columns = [
         {
             name: 'blogTitle',
@@ -46,7 +76,7 @@ export default function myblogs() {
             selector: row => row.action,
             sortable: true,
             cell: row =>
-                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash} /></div>
+                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash} onClick={deleteBlog} data-id={row._id}/> </div>
 
         }
     ];
@@ -55,60 +85,16 @@ export default function myblogs() {
 
     const [data, setData] = useState([])
 
-    useEffect(() => {
-        const fetchData = async () => {
-
-            try {
-                const response = await axios.get('http://localhost:7000/api/blog/getallblog');
-                console.log(response.data.blogs)
-
-                setData(response.data.blogs);
-            } catch (error) {
-                console.error(error.message);
-            }
-
-        }
-
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const url = `${URL}blog/getallblog`;
+    //     }
+    //     fetchData();
+    // }, []);
 
 
 
-    // const data = [
-    //     {
-    //         id: 1,
-    //         blogTitle: 'World Sports Day',
-    //         blogdescription: 'In this blog we will discuss sports around the World',
-    //         category: 'sports',
-    //         action:<FontAwesomeIcon icon={faPencil} />,
-    //         // <FontAwesomeIcon icon={faTrash} />
-    //     },
-    //     {
-    //         id: 2,
-    //         blogTitle: 'inside story of Tech World',
-    //         blogdescription: 'discuss about web technologies',
-    //         category: 'tech',
-    //         action:<FontAwesomeIcon icon={faTrash} />
-    //     },
-    //     {
-    //         id: 3,
-    //         blogTitle: 'know about your financial stability',
-    //         blogdescription: 'there are so many ways to manage finencial conditions',
-    //         category: 'finance'
-    //     },
-    //     // {
-    //     //     id: 4,
-    //     //     blogTitle: '',
-    //     //     blogdescription: '',
-    //     //     category: ''
-    //     // },
-    //     // {
-    //     //     id: 5,
-    //     //     blogTitle: '',
-    //     //     blogdescription: '',
-    //     //     category: ''
-    //     // },
-    // ]
+
     const [records, setRecords] = useState(data)
     function handleFilter(event) {
         const newData = data.filter(row => {
@@ -116,11 +102,7 @@ export default function myblogs() {
         })
         setRecords(newData)
     }
-//     fetch('https://example.com/delete-item/' + id, {
-//   method: 'DELETE',
-// })
-// .then(res => res.text()) // or res.json()
-// .then(res => console.log(res))
+
 
     return (
         <>
