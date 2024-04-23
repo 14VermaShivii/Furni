@@ -5,18 +5,28 @@ import DataTable from "react-data-table-component"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Swal from "sweetalert2";
 
-const deleteUrl=`${URL}blog/deleteBlog`
+const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+
+// const deleteurl=`${URL}blog/deleteBlog`
 export default function Myblogs() {
     const URL = process.env.BASE_URL
     console.log(URL)
 
     async function getMyBlogs() {
         console.log("my function")
+        const url = `${URL}blog/getallblog`;
         try {
             const res = await axios({
                 method: 'get',
-                url: URL
+                url: url
             });
             console.log(res.data.blogs)
             let data = res.data;
@@ -30,27 +40,53 @@ export default function Myblogs() {
     }
 
     const deleteBlog = async (e) => {
-        console .log("deleteblog")
-        // const id = e.currentTarget.getAttribute("data-id")
-        // console.log(id, "Blog id")
-        //     .then((result) => {
-        //         (result.isConfirmed)
-        //         console.log(id, 'function 1')
-        //         try {
-        //             let response = axios.delete(`${URL}blog/deleteBlog/${id}`)
-        //             console.log("post deleted:", id);
-        //          setData(data.filter((post) => post.id !== id));
-        //         //  getMyBlogs()
-        //         } catch (error) {
-        //             console.log(error, "Error message")
-        //             console.error("Error deleting post :", error);
-        //         }
+        console.log("deleteblog")
+        console.log(e.currentTarget.getAttribute("data-id"))
 
-        //     })
+        const id = e.currentTarget.getAttribute("data-id")
+        console.log(id, "Blog id")
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+              try {
+                    let response = axios.delete(`${URL}blog/Blog/${id}`)
+                    console.log("post deleted:", id);
+                    // setData(data.filter((post) => post.id !== id));
+                    getMyBlogs()
+                } catch (error) {
+                    console.log(error, "Error message")
+                    console.error("Error deleting post :", error);
+                }
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Your imaginary file is safe :)",
+                icon: "error"
+              });
+            }
+          });
+        
+
+        // })
     }
-    useEffect(() =>{
+    useEffect(() => {
         getMyBlogs()
-    },[])
+    }, [])
 
 
 
@@ -76,7 +112,8 @@ export default function Myblogs() {
             selector: row => row.action,
             sortable: true,
             cell: row =>
-                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash} onClick={deleteBlog} data-id={row._id}/> </div>
+                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash}
+                    onClick={deleteBlog} data-id={row._id} /> </div>
 
         }
     ];
