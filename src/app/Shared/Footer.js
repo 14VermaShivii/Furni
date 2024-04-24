@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation"
 
 export default function Footer() {
 	const pathname = usePathname()
-	console.log(pathname)
 	if (pathname !== "/login" && pathname !== "/forgotpassword" && pathname !== "/resetpassword" && pathname != "/signup" && pathname != "/changepassword")    //condition for hide show footer
 	{
 		return (

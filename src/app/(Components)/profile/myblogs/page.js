@@ -7,13 +7,13 @@ import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const swalWithBootstrapButtons = Swal.mixin({
+const swalWithBootstrapButtons = Swal.mixin({ //popup sweetalert 2
     customClass: {
-      confirmButton: "btn btn-success",
-      cancelButton: "btn btn-danger"
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
     },
     buttonsStyling: false
-  });
+});
 
 // const deleteurl=`${URL}blog/deleteBlog`
 export default function Myblogs() {
@@ -38,8 +38,7 @@ export default function Myblogs() {
             return error.response;
         }
     }
-
-    const deleteBlog = async (e) => {
+    const deleteBlog = async (e) => {      //sweetalert2
         console.log("deleteblog")
         console.log(e.currentTarget.getAttribute("data-id"))
 
@@ -53,14 +52,14 @@ export default function Myblogs() {
             confirmButtonText: "Yes, delete it!",
             cancelButtonText: "No, cancel!",
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              });
-              try {
+                swalWithBootstrapButtons.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+                try {
                     let response = axios.delete(`${URL}blog/Blog/${id}`)
                     console.log("post deleted:", id);
                     // setData(data.filter((post) => post.id !== id));
@@ -70,25 +69,23 @@ export default function Myblogs() {
                     console.error("Error deleting post :", error);
                 }
             } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "Your imaginary file is safe :)",
-                icon: "error"
-              });
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your imaginary file is safe :)",
+                    icon: "error"
+                });
             }
-          });
-        
+        });
+
 
         // })
     }
     useEffect(() => {
         getMyBlogs()
     }, [])
-
-
 
 
     const columns = [
@@ -112,14 +109,11 @@ export default function Myblogs() {
             selector: row => row.action,
             sortable: true,
             cell: row =>
-                <div> <FontAwesomeIcon icon={faPencil} /> <FontAwesomeIcon icon={faTrash}
+                <div> <FontAwesomeIcon icon={faPencil} href="/createblog" /> <FontAwesomeIcon icon={faTrash}
                     onClick={deleteBlog} data-id={row._id} /> </div>
 
         }
     ];
-
-
-
     const [data, setData] = useState([])
 
     // useEffect(() => {
@@ -151,6 +145,7 @@ export default function Myblogs() {
                     fixedHeader
                     pagination
                 >
+                   
                 </DataTable>
 
             </div>

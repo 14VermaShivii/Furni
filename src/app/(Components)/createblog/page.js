@@ -70,7 +70,7 @@ export default function createblog() {
                 <div className="row">
                     <div className="col-md-3 border-right">
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <Image className="rounded-circle mt-5"
+                            <Image alt="" className="rounded-circle mt-5"
                                 width={100}
                                 height={100}
                                 src={profile} />
@@ -83,7 +83,7 @@ export default function createblog() {
                     <div className="col-md-5 border-right">
                         <div className="p-3 py-5">
                             <div className="d-flex justify-content-between align-items-center mb-3">
-                                <h4 className="text-right"><h2>Create Your Blog</h2></h4>
+                                <h4 className="text-right"><b>Create Your Blog</b></h4>
                             </div>
 
 

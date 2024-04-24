@@ -17,15 +17,15 @@ import profile from "../(Components)/profile/page";
 
 
 export default function Header() {
-    const [Islogin, setIslogin] = useState(false)
+    const [Islogin, setIslogin] = useState(true)
 
     const pathname = usePathname()
     // console.log(pathname)
-    const [isOpened, setIsOpened] = useState();
+    const [isOpened, setIsOpened] = useState(false);
     // const [isdisabled, setDisabled] = useState(true)
     const URL=process.env.BASE_URL
     const[errormsg,setErrormsg]=useState()
-    const [enable,setEnable]=useState(true)
+    const [enable,setEnable]=useState()
     const[value, setValue] = useState()
 const search=async()=>{
     console.log("search working")
@@ -129,7 +129,8 @@ const search=async()=>{
                                 </a>
 
                                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><Link className="dropdown-item" href="/profile/myblogs">My blogs</Link></li>
+                                    <li><Link className="dropdown-item" href="/profile/myblogs">My blogs
+                                    </Link></li>
                                     <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
 
                                 </ul>
