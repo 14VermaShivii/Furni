@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencil } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 const swalWithBootstrapButtons = Swal.mixin({ //popup sweetalert 2
     customClass: {
@@ -109,7 +110,7 @@ export default function Myblogs() {
             selector: row => row.action,
             sortable: true,
             cell: row =>
-                <div> <FontAwesomeIcon icon={faPencil} href="/createblog" /> <FontAwesomeIcon icon={faTrash}
+                <div> <Link className="text-dark" href={"/updateblog?blogid=6627b33d3d16c11574e99c75"}> <FontAwesomeIcon icon={faPencil} /> </Link><FontAwesomeIcon icon={faTrash}
                     onClick={deleteBlog} data-id={row._id} /> </div>
 
         }

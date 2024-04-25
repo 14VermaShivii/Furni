@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css"
 import { useFormik } from "formik"
 import { createblogschema } from "@/app/schemas"
@@ -10,18 +10,15 @@ import profilepic from "../../../../public/images/girl.jpg"
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+
+export default function Search() {
 
 
-
-export default function createblog() {
     const router=useRouter()
     const [profile, setProfile] = useState(profilepic)
     const handleInputChange = (event) => {
         setProfile(URL.createObjectURL(event.target.files[0]));
-
-        
-
-       
     }
     const initialValues = {
         Blogtitle: "",
@@ -30,43 +27,77 @@ export default function createblog() {
 
     };
 
+
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-        useFormik({
-            initialValues: initialValues,
-            validationSchema: createblogschema,
+    useFormik({
+        initialValues: initialValues,
+        validationSchema: createblogschema,
 
-            onSubmit: (values, action) => {
-                console.log(values);
-                let config = {                   //api
-                    method: 'post',
-                    maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/Blog/create',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: values
-                };
-                axios.request(config)
-                .then((response) => {
-                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
-                    localStorage.setItem('authtoke',response.data.token)
-                    // localStorage.getItem('authtoken')
-                
-                    // NextResponse.redirect("profile")
-                    action.resetForm();
+        onSubmit: (values, action) => {
+            console.log(values);
+            let config = {                   //api
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:7000/api/Blog/create',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: values
+            };
+            axios.request(config)
+            .then((response) => {
+                toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                localStorage.setItem('authtoke',response.data.token)
+                // localStorage.getItem('authtoken')
+            
+                // NextResponse.redirect("profile")
+                action.resetForm();
+            })
+            .catch((error) => {
+                    toast.error(error.response.data.message,{theme: "dark"});
+                   
+                });
+
+           
+        },
+    });
+
+
+    const searchParam = useSearchParams()
+    const blogid = searchParam.get('blogid');
+    // console.log(blogid)
+    const [result, setResult] = useState(null);
+    const [errormsg, setErrormsg] = useState()
+    const URL = process.env.BASE_URL
+    console.log(URL)
+   
+    useEffect(() => {
+        const getEditblog = async () => {
+            const url = `${URL}blog/Blog/${blogid}`;
+            try {
+                const response = await axios({
+                    method: 'get',
+                    url: url
+                }).then((res) => {
+                    console.log(res.data)
+                    setResult(res.data)
+                    // setIsLoading(false)
                 })
-                .catch((error) => {
-                        toast.error(error.response.data.message,{theme: "dark"});
-                       
-                    });
 
-               
-            },
-        });
+            } catch (err) {
+                setErrormsg(err?.response?.data?.message)
+                console.log(err);
+                // setIsLoading(false)
+            }
+
+        };
+        getEditblog();
+    }, []);
+
     return (
         <>
-
-            < div className="container rounded bg-white mt-5 mb-5">
+        < div className="container rounded bg-white mt-5 mb-5">
                 <div className="row">
                     <div className="col-md-3 border-right">
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -83,7 +114,7 @@ export default function createblog() {
                     <div className="col-md-5 border-right">
                         <div className="p-3 py-5">
                             <div className="d-flex justify-content-between align-items-center mb-3">
-                                <h4 className="text-right"><b>Create Your Blog</b></h4>
+                                <h4 className="text-right"><b>Update Your Blog</b></h4>
                             </div>
 
 
@@ -172,5 +203,4 @@ export default function createblog() {
 
         </>
     )
-
 }
