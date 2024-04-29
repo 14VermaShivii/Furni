@@ -932,3 +932,6 @@ body {
 .form-error{
   color: red;
 }
+.hidden{
+  visibility: hidden;
+}

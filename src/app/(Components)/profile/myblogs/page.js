@@ -110,7 +110,7 @@ export default function Myblogs() {
             selector: row => row.action,
             sortable: true,
             cell: row =>
-                <div> <Link className="text-dark" href={"/updateblog?blogid=6627b33d3d16c11574e99c75"}> <FontAwesomeIcon icon={faPencil} /> </Link><FontAwesomeIcon icon={faTrash}
+                <div> <Link className="text-dark" href={`/updateblog?blogid=${row._id}`}> <FontAwesomeIcon icon={faPencil} /> </Link><FontAwesomeIcon icon={faTrash}
                     onClick={deleteBlog} data-id={row._id} /> </div>
 
         }

@@ -11,7 +11,8 @@ export default function profile() {
                         <div className="px-4 pt-0 pb-5 cover">
                             <div className="media align-items-end profile-head">
                                 <div className="profile mr-3"><img src="./images/girl.jpg" alt="..." width="130" className="rounded mb-2 img-thumbnail" />
-                                    <a href={"/editprofile"} className="btn btn-primary btn-sm btn-block">Edit profile</a></div>
+                                    <a href={"/editprofile"} 
+                                    className="btn btn-primary btn-sm btn-block">Edit profile</a></div>
                                 <div className="media-body mb-5 text-white">
                                     <h4 className="mt-0 mb-0">Shivani Verma</h4>
                                     <p className="small mb-4">
@@ -43,7 +44,8 @@ export default function profile() {
                             </Link>
                             </div> <div className="row">
                                 <div className="col-lg-6 mb-2 pr-lg-1">
-                                    <img src="images/blogging1.jpg" alt="" className="img-fluid rounded shadow-sm" />
+                                    <img src="images/blogging1.jpg" alt="" 
+                                    className="img-fluid rounded shadow-sm" />
                                 </div>
                                 <div className="col-lg-6 mb-2 pl-lg-1">
                                     <img src="images/blogging2.jpg" alt="" className="img-fluid rounded shadow-sm" />
