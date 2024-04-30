@@ -40,7 +40,7 @@ export default function createblog() {
                 let config = {                   //api
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/Blog/create',
+                    url:  `${URL}blog/${create}`,
                     headers: {
                         'Content-Type': 'application/json'
                     },

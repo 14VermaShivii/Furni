@@ -6,10 +6,11 @@ import { useFormik } from "formik"
 import { loginschema } from '@/app/schemas';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; //redirect page
 
 export default function login() {
-    const router = useRouter()
+    const URL = process.env.BASE_URL
+    const router = useRouter() //redirect page
     // const notify = () => toast("Wow so easy!");
     const initialValues = {
         email: "",
@@ -26,7 +27,7 @@ export default function login() {
                 let config = {                   //api
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/auth/login',
+                    url: `${URL}auth/login`,
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -39,7 +40,7 @@ export default function login() {
                         toast.success(response.data.message, { position: "top-center", theme: "dark" });
                         localStorage.setItem('authToken', response.data.token)      //token
                         // localStorage.getItem('authtoken')
-                        router.push("/profile")
+                        router.push("/profile")         //redirect page
                         // NextResponse.redirect("profile")
                         action.resetForm();
                     })
