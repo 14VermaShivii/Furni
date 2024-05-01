@@ -14,7 +14,7 @@ export function Readmore(props) {
         <>
             <p>
                 {hidden ? `${text?.substr(0, maxelength).trim()}...` : text}
-                <Link href={"/blogs/blog_id"}> Readmore</Link>
+                <Link href={"/blogs/${blog_id}"}> Readmore</Link>
 
             </p >
         </>

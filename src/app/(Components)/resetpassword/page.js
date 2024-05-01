@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 
 
 export default function resetpassword() {
+    const URL = process.env.BASE_URL
     const router = useRouter()
     const initialValues = {
         newpassword: "",
@@ -26,7 +27,7 @@ export default function resetpassword() {
                 let config = {
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/user/reset-password',
+                    url: `{URL}user/reset-password`,
                     headers: {
                         'Content-Type': 'application/json'
                     },

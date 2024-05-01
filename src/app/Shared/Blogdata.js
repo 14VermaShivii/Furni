@@ -76,7 +76,7 @@ export default function Blogdata(props) {
                                             <h3><Link href={`tech/${data._id}`}>{data.blogTitle}</Link></h3>
 
                                             {isVisible ? <Readmore text={data?.blogDescripton}
-                                                maxelength={35} /> : <> </>}
+                                                maxelength={35} /> : <> </> }
                                             <div className="meta">
                                                 <span>by <a href="#"></a></span> <span>on
                                                     <a href="#">{moment(data.createDate).format('LL')}

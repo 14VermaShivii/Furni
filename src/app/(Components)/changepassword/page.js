@@ -8,6 +8,7 @@ import {toast} from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 export default function Changepassword() {
+    const URL = process.env.BASE_URL
     const router = useRouter()
     const initialValues = {
         oldpassword: "",
@@ -24,7 +25,7 @@ export default function Changepassword() {
                 let config = {
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/user/change-password',
+                    url: `${URL}user/change-password`,
                     headers: {
                         'Content-Type': 'application/json'
                     },

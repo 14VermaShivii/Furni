@@ -35,8 +35,6 @@ export default function Lifestyle() {
 
 	};
 
-	
-
 		getLifestyleList();
 	}, [errormsg]);
 

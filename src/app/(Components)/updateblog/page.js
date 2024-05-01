@@ -10,7 +10,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 // import Link from "next/link";
 
 export default function UpdateBlog() {
-    const [result, setResult] = useState([]);
+    const [result, setResult] = useState();
     const [errormsg, setErrormsg] = useState()
     const URL = process.env.BASE_URL
     const router = useRouter()
@@ -24,7 +24,7 @@ export default function UpdateBlog() {
     const blogid = searchParam.get('blogid');
     // const url = `${URL}/Blog${encodeURIComponent(blogid)}`
 
-    console.log(blogid, "blogid")
+    // console.log(blogid, "blogid")
     useEffect(() => {
         const url = `${URL}blog/Blog/${blogid}`
 
@@ -47,8 +47,8 @@ export default function UpdateBlog() {
     }, []);
     // console.log(result?.blogTitle, 'state')
     const initialValues = {
-        blogTitle: "",
-        blogDescription: "",
+        Blogtitle: "",
+        Blogdescription: "",
         category: "",
     };
 
@@ -57,9 +57,10 @@ export default function UpdateBlog() {
             initialValues: result || initialValues,
             enableReinitialize: true,
             validationSchema: updateblogschema,
+
             onSubmit: (values, action) => {
-                console.log(values, 'form-values');
-                console.log(process.env.BASEURL)
+                // console.log(values, 'form-values');
+                // console.log(process.env.BASEURL)
                 const options = {
                     method: 'PATCH',
                     url: `${URL}blog/Blog/${blogid}`,
@@ -67,23 +68,21 @@ export default function UpdateBlog() {
                         'content-type': 'application/json',
                     },
                     data: values
-
                 };
                 const updateData = async () => {
                     try {
                         const response = await axios
                             .request(options)
                             .then(function (response) {
-                                console.log(response.data);
+                                // console.log(response.data);
                                 toast.success(response.data.message, { theme: "dark", position: "top-center" })
                                 router.push('/profile/myblogs')
-                                localStorage.setItem('authToken', response.data.token)
                             })
                             .catch(function (error) {
                                 console.error(error);
                                 toast.error(error.response.data.message, { theme: "dark", position: "top-center" })
                             });
-                        console.log(response.data)
+                        // console.log(response.data)
                     } catch (error) {
                         console.log(errors)
                     }
@@ -122,9 +121,9 @@ export default function UpdateBlog() {
                                     <div className="col-md-12">
                                         <label className="labels">Enter Blog Title</label>
                                         <input className="form-control"
-                                            type="name"
-                                            autoComplete="off"
-                                            name="blogTitle" id="blogTitle"
+                                            type="text"
+                                            name="Blogtitle"
+                                            id="Blogtitle"
                                             placeholder="Enter Blog Title"
                                             value={values.blogTitle}
                                             onChange={handleChange}
@@ -133,19 +132,17 @@ export default function UpdateBlog() {
                                     </div>
                                     {/* </div> */}
                                 </div>
-                                {errors.blogTitle && touched.blogTitle ? (
-                                    <p className="form-error">{errors.blogTitle}</p>
+                                {errors.Blogtitle && touched.Blogtitle ? (
+                                    <p className="form-error">{errors.Blogtitle}</p>
                                 ) : null}
                                 <div className="form-field d-flex align-items-center">
                                     {/* <div className="row mt-2"> */}
                                     <div className="col-md-12">
                                         <label className="labels">Enter Blog Description</label>
                                         <textarea className="form-control"
-                                            type="blogDescription"
                                             rows={5}
-                                            autoComplete="off"
-                                            name="blogDescription"
-                                            id="blogDescription"
+                                            name="Blogdescription"
+                                            id="Blogdescription"
                                             placeholder="Enter Blog Description"
                                             value={values.blogDescripton}
                                             onChange={handleChange}
@@ -154,17 +151,16 @@ export default function UpdateBlog() {
                                     </div>
                                     {/* </div> */}
                                 </div>
-                                {errors.blogDescripton && touched.blogDescripton ? (
-                                    <p className="form-error">{errors.blogDescripton}</p>
+                                {errors.Blogdescription && touched.Blogdescription ? (
+                                    <p className="form-error">{errors.Blogdescription}</p>
                                 ) : null}
                                 <div className="form-field d-flex align-items-center">
                                     <div className="col-md-12">
                                         <label className="labels">Enter Blog category</label>
-                                        <select className="form-select" value={values.category}
+                                        <select className="form-select"
+                                            value={values.category}
                                             name="category"
                                             id="category"
-                                            type="category"
-                                            autoCompletevalues
                                             placeholder="category"
                                             onChange={handleChange}
                                             onBlur={handleBlur}>

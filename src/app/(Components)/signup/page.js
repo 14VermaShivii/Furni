@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
 export default function signup() {
+    const URL = process.env.BASE_URL
     const router =useRouter()
     const initialValues = {
         firstname: "",
@@ -26,7 +27,7 @@ export default function signup() {
                 let config = {
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url: 'http://localhost:7000/api/auth/register',
+                    url: `{URL}/auth/register`,
                     headers: {
                         'Content-Type': 'application/json'
                     },
