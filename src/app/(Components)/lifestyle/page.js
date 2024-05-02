@@ -17,7 +17,7 @@ export default function Lifestyle() {
 	useEffect(() => {
 	const getLifestyleList = async () => {
 
-		const url = `${URL}blog/getallBlog?category=lifestyle`;
+		const url = `${URL}blog/getallBlog?category=lifestyle`
 
 		try {
 			const response = await axios({

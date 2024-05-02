@@ -73,13 +73,14 @@ export default function Blogdata(props) {
                                         <Link href="#" className="post-thumbnail"><img src={getImageByCat(data?.category)} alt="Image" className="img-fluid" /></Link>
 
                                         <div className="post-content-entry">
-                                            <h3><Link href={`tech/${data._id}`}>{data.blogTitle}</Link></h3>
+                                            <h3><Link href={`tech/${data._id}`}>{data?.blogTitle}</Link>
+                                            </h3>
 
-                                            {isVisible ? <Readmore text={data?.blogDescripton}
+                                            {isVisible ? <Readmore text={data?.blogDescription}
                                                 maxelength={35} /> : <> </> }
                                             <div className="meta">
                                                 <span>by <a href="#"></a></span> <span>on
-                                                    <a href="#">{moment(data.createDate).format('LL')}
+                                                    <a href="#">{moment(data?.createDate).format('LL')}
                                                     </a></span>
 
                                             </div>

@@ -5,7 +5,7 @@ import { updateblogschema } from "@/app/schemas"
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from 'react-toastify'
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import {  useRouter, useSearchParams } from "next/navigation";
 // import profilepic from "../../../../public/images/girl.jpg"
 // import Link from "next/link";
 
@@ -46,15 +46,15 @@ export default function UpdateBlog() {
         blog_id();
     }, []);
     // console.log(result?.blogTitle, 'state')
-    const initialValues = {
-        Blogtitle: "",
-        Blogdescription: "",
+    const initialValue = {
+        blogTitle: "",
+        blogDescription: "",
         category: "",
     };
 
     const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
         useFormik({
-            initialValues: result || initialValues,
+            initialValues: result || initialValue,
             enableReinitialize: true,
             validationSchema: updateblogschema,
 
@@ -82,13 +82,13 @@ export default function UpdateBlog() {
                                 console.error(error);
                                 toast.error(error.response.data.message, { theme: "dark", position: "top-center" })
                             });
-                        // console.log(response.data)
-                    } catch (error) {
+                            // console.log(response.data)
+                        } catch (error) {
                         console.log(errors)
                     }
                 };
                 updateData()
-                action.resetForm();
+                // action.resetForm();
             },
         }
         );
@@ -122,8 +122,8 @@ export default function UpdateBlog() {
                                         <label className="labels">Enter Blog Title</label>
                                         <input className="form-control"
                                             type="text"
-                                            name="Blogtitle"
-                                            id="Blogtitle"
+                                            name="blogTitle"
+                                            id="blogTitle"
                                             placeholder="Enter Blog Title"
                                             value={values.blogTitle}
                                             onChange={handleChange}
@@ -132,27 +132,28 @@ export default function UpdateBlog() {
                                     </div>
                                     {/* </div> */}
                                 </div>
-                                {errors.Blogtitle && touched.Blogtitle ? (
-                                    <p className="form-error">{errors.Blogtitle}</p>
+                                {errors.blogTitle && touched.blogTitle ? (
+                                    <p className="form-error">{errors.blogTitle}</p>
                                 ) : null}
                                 <div className="form-field d-flex align-items-center">
-                                    {/* <div className="row mt-2"> */}
+                                   
                                     <div className="col-md-12">
                                         <label className="labels">Enter Blog Description</label>
                                         <textarea className="form-control"
                                             rows={5}
-                                            name="Blogdescription"
-                                            id="Blogdescription"
+                                            type="text"
+                                            name="blogDescription"
+                                            id="blogDescription"
                                             placeholder="Enter Blog Description"
-                                            value={values.blogDescripton}
+                                            value={values.blogDescription}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                         ></textarea>
                                     </div>
                                     {/* </div> */}
                                 </div>
-                                {errors.Blogdescription && touched.Blogdescription ? (
-                                    <p className="form-error">{errors.Blogdescription}</p>
+                                {errors.blogDescription && touched.blogDescription ? (
+                                    <p className="form-error">{errors.blogDescription}</p>
                                 ) : null}
                                 <div className="form-field d-flex align-items-center">
                                     <div className="col-md-12">
@@ -179,7 +180,8 @@ export default function UpdateBlog() {
                                     <p className="form-error">{errors.category}</p>
                                 ) : null}
 
-                                <div className="mt-5 text-center"><button className="btn btn-primary profile-button" type="submit">Update</button></div>
+                                <div className="mt-5 text-center">
+                                    <button className="btn btn-primary profile-button" type="submit">Update</button></div>
                             </form>
                         </div>
                     </div>

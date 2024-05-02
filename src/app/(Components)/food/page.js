@@ -19,7 +19,7 @@ export default function Food() {
 	useEffect(() => {
 		const getFoodList = async () => {
 
-			const url = `${URL}blog/getallBlog?category=food`;
+			const url = `${URL}blog/getallBlog?category=food`
 
 			try {
 				const response = await axios({
@@ -27,18 +27,15 @@ export default function Food() {
 					url: url
 				}).then((res) => {
 					console.log(res.data.blogs)
-					setFoodData(res.data.blogs)
+					setFoodData(res?.data?.blogs)
 				})
 
 			} catch (err) {
-				setErrormsg(err.response.data.message)
+				setErrormsg(err?.response?.data?.message)
 				console.error(errormsg);
 			}
 
 		};
-
-
-
 		getFoodList();
 	}, [errormsg]);
 

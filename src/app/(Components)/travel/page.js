@@ -18,7 +18,7 @@ export default function Travel() {
 
 		const getTravelList = async () => {
 
-			const url = `${URL}blog/getallBlog?category=travel`;
+			const url = `${URL}blog/getallBlog?category=travel`
 
 			try {
 				const response = await axios({

@@ -17,7 +17,7 @@ const URL=process.env.BASE_URL
 	useEffect(() => {
 	const getFashionList = async () => {
 
-		const url = `${URL}blog/getallBlog?category=fashion`;
+		const url = `${URL}blog/getallBlog?category=fashion`
 
 		try {
 			const response = await axios({

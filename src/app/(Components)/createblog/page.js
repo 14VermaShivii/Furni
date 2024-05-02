@@ -24,8 +24,8 @@ export default function createblog() {
        
     }
     const initialValues = {
-        Blogtitle: "",
-        Blogdescription: "",
+        blogTitle: "",
+        blogDescription: "",
         category: ""
 
     };
@@ -87,23 +87,23 @@ export default function createblog() {
                             </div>
 
 
-                            <form className="row mt-3">
+                            <form onSubmit={handleSubmit} className="row mt-3">
                                 <div className="col-md-12"><label className="labels"><h4><b>blogTitle
                                 </b></h4></label>
                                     < input
                                         type="text"
                                         autoComplete="off"
                                         className="form-control"
-                                        name="Blogtitle"
-                                        id="Blogtitle"
-                                        placeholder="Blogtitle"
-                                        value={values.Blogtitle}
+                                        name="blogTitle"
+                                        id="blogTitle"
+                                        placeholder="blogTitle"
+                                        value={values.blogTitle}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                 </div>
-                                {errors.Blogtitle && touched.Blogtitle ? (
-                                    <p className="form-error">{errors.Blogtitle}</p>
+                                {errors.blogTitle && touched.blogTitle ? (
+                                    <p className="form-error">{errors.blogTitle}</p>
                                 ) : null}
 
 
@@ -113,18 +113,18 @@ export default function createblog() {
                                         <textarea
                                             type="text"
                                             autoComplete="off"
-                                            name="Blogdescription"
+                                            name="blogDescription"
                                             className="form-control"
-                                            id="Blogdescription"
-                                            placeholder="Blogdescription"
-                                            value={values.Blogdescription}
+                                            id="blogDescription"
+                                            placeholder="blogDescription"
+                                            value={values.blogDescription}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             rows={5}
                                         ></textarea>
                                     </div>
-                                    {errors.Blogdescription && touched.Blogdescription ? (
-                                        <p className="form-error">{errors.Blogdescription}</p>
+                                    {errors.blogDescription && touched.blogDescription ? (
+                                        <p className="form-error">{errors.blogDescription}</p>
                                     ) : null}
 
 
@@ -155,7 +155,7 @@ export default function createblog() {
 
                                         <div className="mt-5 text-center">
                                             <button className="btn btn-primary profile-button"
-                                                type="submit">Save Profile</button></div>
+                                                type="submit">Create Profile</button></div>
                                     </div>
                                 </div>
 

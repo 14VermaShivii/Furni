@@ -97,7 +97,7 @@ export default function Myblogs() {
         },
         {
             name: 'blogDescription',
-            selector: row => row.blogDescripton,
+            selector: row => row.blogDescription,
             sortable: true
         },
         {
