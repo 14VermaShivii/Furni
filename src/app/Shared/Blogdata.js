@@ -10,12 +10,12 @@ import fashionimage from "../../../public/images/fashion1.jpg"
 import foodimage from "../../../public/images/food1.jpg"
 import travelimage from "../../../public/images/travel1.jpg"
 import lifestyleimage from "../../../public/images/lifestyle1.jpg"
-import image from "../../../public/images/details5.jpg"
+import image from "../../../../../public/images/details5.jpg"
+import defaultimage from "../../../../../Public/images/defaultimage.jpg"
 
 export default function Blogdata(props) {
 
     const [isLoading, setIsLoading] = useState(true);
-
     const [getData, setgetData] = useState()
     const [getError, setgetError] = useState()
     const [isVisible, setVisible] = useState(true)
@@ -36,7 +36,7 @@ export default function Blogdata(props) {
             travel: travelimage.src,
             food: foodimage.src,
             lifestyle: lifestyleimage.src,
-            default: image.src
+            default: defaultimage.jpg
         }
 
         return imagestatus[cat] || imagestatus['default']
@@ -45,7 +45,6 @@ export default function Blogdata(props) {
 
     return (
         <>
-
             {isLoading ? (
                 <div
                     style={{

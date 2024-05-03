@@ -11,9 +11,12 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+import {toast} from "react-toastify"
+
 
 
 export default function createblog() {
+    const URL = process.env.BASE_URL
     const router=useRouter()
     const [profile, setProfile] = useState(profilepic)
     const handleInputChange = (event) => {
@@ -40,7 +43,7 @@ export default function createblog() {
                 let config = {                   //api
                     method: 'post',
                     maxBodyLength: Infinity,
-                    url:  `${URL}blog/${create}`,
+                    url:  `${URL}blog/create`,
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -48,7 +51,7 @@ export default function createblog() {
                 };
                 axios.request(config)
                 .then((response) => {
-                    toast.success(response.data.message,{position:"top-center",theme:"dark"});
+                    toast.success(response?.data?.message,{position:"top-center",theme:"dark"});
                     localStorage.setItem('authtoke',response.data.token)
                     // localStorage.getItem('authtoken')
                 
@@ -56,7 +59,7 @@ export default function createblog() {
                     action.resetForm();
                 })
                 .catch((error) => {
-                        toast.error(error.response.data.message,{theme: "dark"});
+                        toast.error(error?.response?.data?.message,{theme: "dark"});
                        
                     });
 
