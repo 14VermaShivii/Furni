@@ -1,20 +1,16 @@
 "use client"
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-export function Readmore(props) {
+
+export default function Readmore(props) {
     const [hidden, Sethidden] = useState(true)
-    const { text, maxelength } = props
-    
-    // useEffect(()=>{
-    //     return function () {
-    //         console.log("unmounted")
-    //     }
-    // })
+    const { text, maxlength,blogid} = props
+
     return (
         <>
             <p>
-                {hidden ? `${text?.substr(0, maxelength).trim()}...` : text}
-                <Link href={"/blogs/${id}"}> Readmore</Link>
+                {hidden ? `${text?.substr(0, maxlength).trim()}...` : text}
+                <Link href={`/blogs/${blogid}`}> Readmore</Link>
 
             </p >
         </>

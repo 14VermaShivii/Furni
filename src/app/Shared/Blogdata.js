@@ -3,15 +3,15 @@ import moment from "moment";
 import Link from "next/link";
 import LoaderComp from "@/app/loader";
 
-import { useEffect, useState } from "react";
-import { Readmore } from "./Readmore";
+import { useEffect, useState} from "react";
+import  Readmore  from "./Readmore";
 import techimage from "../../../public/images/tech1.jpg"
 import fashionimage from "../../../public/images/fashion1.jpg"
 import foodimage from "../../../public/images/food1.jpg"
 import travelimage from "../../../public/images/travel1.jpg"
 import lifestyleimage from "../../../public/images/lifestyle1.jpg"
-import image from "../../../../../public/images/details5.jpg"
-import defaultimage from "../../../../../Public/images/defaultimage.jpg"
+import image from "../../../public/images/details5.jpg"
+// import defaultimage from "../../../public/images/defaultimage.jpg"
 
 export default function Blogdata(props) {
 
@@ -26,6 +26,7 @@ export default function Blogdata(props) {
         if (getData || getError) {
             setIsLoading(false)
         }
+        console.log(getData)
 
     },[props])
 
@@ -36,7 +37,7 @@ export default function Blogdata(props) {
             travel: travelimage.src,
             food: foodimage.src,
             lifestyle: lifestyleimage.src,
-            default: defaultimage.jpg
+            default:image.src
         }
 
         return imagestatus[cat] || imagestatus['default']
@@ -69,14 +70,16 @@ export default function Blogdata(props) {
                                             <img src={props?.imageData?.src} alt="Image"
                                                 className="img-fluid" /></Link> */}
 
-                                        <Link href="#" className="post-thumbnail"><img src={getImageByCat(data?.category)} alt="Image" className="img-fluid" /></Link>
+                                        <Link href="#" className="post-thumbnail">
+                                            <img src={getImageByCat(data?.category)}
+                                             alt="Image" className="img-fluid" /></Link>
 
                                         <div className="post-content-entry">
-                                            <h3><Link href={`tech/${data._id}`}>{data?.blogTitle}</Link>
+                                            <h3><Link href={`blogs/${data?._id}`}>{data?.blogTitle}</Link>
                                             </h3>
 
                                             {isVisible ? <Readmore text={data?.blogDescription}
-                                                maxelength={35} /> : <> </> }
+                                                maxlength={35} blogid={data?._id}/> : <> </> }
                                             <div className="meta">
                                                 <span>by <a href="#"></a></span> <span>on
                                                     <a href="#">{moment(data?.createDate).format('LL')}
