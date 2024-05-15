@@ -1,6 +1,37 @@
+"use client"
 import Link from "next/link";
+import axios from "axios";
+import { useState,useEffect } from "react";
 
 export default function profile() {
+    const [profileData, setProfileData] = useState();
+	const [errormsg, setErrormsg] = useState()
+	const URL=process.env.BASE_URL
+			console.log(URL)
+	useEffect(() => {
+
+		const getProfileList = async () => {
+
+			const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
+
+			try {
+				const response = await axios({
+					method: 'get',
+					url: url
+				}).then((res) => {
+					console.log(res?.data?.profile)
+					setProfileData(res?.data?.profile)
+				})
+
+			} catch (err) {
+				setErrormsg(err?.response?.data?.message) 
+				console.error(err);
+			}
+		};
+
+		getProfileList();
+	}, []);
+
     return (
         <>
 

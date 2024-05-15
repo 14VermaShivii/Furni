@@ -15,7 +15,7 @@ console.log(search)
     const URL = process.env.BASE_URL
     console.log(URL)
     useEffect(() => {
-        const getTechList = async () => {
+        const getProfileList = async () => {
 
             const url = `${URL}blog/search?q=${encodeURIComponent(search)}`;
             try {
@@ -35,7 +35,7 @@ console.log(search)
             }
 
         };
-        getTechList();
+        getProfileList();
     }, []);
 
     return (

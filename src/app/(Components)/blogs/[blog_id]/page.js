@@ -71,6 +71,17 @@ export default function Blogid({ params }) {
                                     <h3><Link href={`${allblog._id}`}>{allblog?.blogTitle}</Link>
                                     </h3>
 
+                                    <div className="post-content-entry">
+                                    <h3><Link href={`${allblog._id}`}>{allblog?.blogDescription}</Link>
+                                    </h3>
+                                    </div>
+
+                                    {/* <div className="post-content-entry">
+                                    <a href="#">{moment(allblog?.blogDescription)}
+                                    </a>
+                                    </div> */}
+
+
                                     <div className="meta">
                                         <span>by <a href="#"></a></span> <span>on
                                             <a href="#">{moment(allblog?.createDate).format('LL')}
