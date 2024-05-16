@@ -12,6 +12,7 @@ export default function Lifestyle() {
 
 	const [lifestyleData, setLifestyleData] = useState(null);
 	const [errormsg, setErrormsg]=useState()
+	const [isloading, setIsLoading]=useState()
 	const URL=process.env.BASE_URL
 			console.log(URL)
 	useEffect(() => {
@@ -24,13 +25,15 @@ export default function Lifestyle() {
 				method: 'get',
 				url: url
 			}).then((res) => {
-				console.log(res.data.blogs)
-				setLifestyleData(res.data.blogs)
+				console.log(res?.data?.blogs)
+				setLifestyleData(res?.data?.blogs)
+				setIsLoading(false)
 			})
 
 		} catch (err) {
-			setErrormsg(err.response.data.message)
+			setErrormsg(err?.response?.data?.message)
 			console.error(errormsg);
+			setIsLoading(false)
 		}
 
 	};

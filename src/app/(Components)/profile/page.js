@@ -6,6 +6,7 @@ import { useState,useEffect } from "react";
 export default function profile() {
     const [profileData, setProfileData] = useState();
 	const [errormsg, setErrormsg] = useState()
+    const [data,setData ]=useState()
 	const URL=process.env.BASE_URL
 			console.log(URL)
 	useEffect(() => {
@@ -19,8 +20,8 @@ export default function profile() {
 					method: 'get',
 					url: url
 				}).then((res) => {
-					console.log(res?.data?.profile)
-					setProfileData(res?.data?.profile)
+                    setData(res?.data?.profile?.[0])
+					console.log(res?.data?.profile?.[0])
 				})
 
 			} catch (err) {
@@ -45,7 +46,9 @@ export default function profile() {
                                     <a href={"/editprofile"} 
                                     className="btn btn-primary btn-sm btn-block">Edit profile</a></div>
                                 <div className="media-body mb-5 text-white">
-                                    <h4 className="mt-0 mb-0">Shivani Verma</h4>
+                                    <h4 className="mt-0 mb-0">{data?.userId?.firstname} 
+                                    {data?.userId?.surname}</h4>
+                                    <p className="font-italic mb-0">{data?.dob}</p>
                                     <p className="small mb-4">
                                         <i className="fas fa-map-marker-alt mr-2"></i>India</p>
                                 </div>
@@ -60,11 +63,11 @@ export default function profile() {
 
 
                         <div className="px-4 py-3">
-                            <h5 className="mb-0"><b>About</b></h5>
                             <div className="p-4 rounded shadow-sm bg-light">
-                                <p className="font-italic mb-0">Web Developer</p>
-                                <p className="font-italic mb-0">Lives in India</p>
-                                <p className="font-italic mb-0">Photography</p>
+                            <h5 className="mb-0"><b>{data?.about}</b></h5>
+                                {/* <p className="font-italic mb-0">{data?.dob}</p> */}
+                                {/* <p className="font-italic mb-0">Lives in India</p>
+                                <p className="font-italic mb-0">Photography</p> */}
                             </div>
                         </div>
                         <div className="py-4 px-4">
@@ -79,7 +82,8 @@ export default function profile() {
                                     className="img-fluid rounded shadow-sm" />
                                 </div>
                                 <div className="col-lg-6 mb-2 pl-lg-1">
-                                    <img src="images/blogging2.jpg" alt="" className="img-fluid rounded shadow-sm" />
+                                    <img src="images/blogging2.jpg" alt=""
+                                     className="img-fluid rounded shadow-sm" />
                                 </div>
                                 <div className="col-lg-6 pr-lg-1 mb-2">
                                     <img src="images/blogging3.jpg" alt="" className="img-fluid rounded shadow-sm" />
