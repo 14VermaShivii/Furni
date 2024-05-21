@@ -34,3 +34,6 @@ export const updateblogschema = Yup.object({
     blogDescription:Yup.string().min(8).required("please enter your Blogdescription") , 
     category:Yup.string().min(3).required("please enter your category")
 })
+export const footerchema=Yup.object({
+    email: Yup.string().min(2).required("Please enter your email"),
+})

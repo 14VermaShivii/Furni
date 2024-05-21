@@ -11,32 +11,32 @@ import lifestyleimage from "../../../../public/images/lifestyle1.jpg"
 export default function Lifestyle() {
 
 	const [lifestyleData, setLifestyleData] = useState(null);
-	const [errormsg, setErrormsg]=useState()
-	const [isloading, setIsLoading]=useState()
-	const URL=process.env.BASE_URL
-			console.log(URL)
+	const [errormsg, setErrormsg] = useState()
+	const [isloading, setIsLoading] = useState()
+	const URL = process.env.BASE_URL
+	console.log(URL)
 	useEffect(() => {
-	const getLifestyleList = async () => {
+		const getLifestyleList = async () => {
 
-		const url = `${URL}blog/getallBlog?category=lifestyle`
+			const url = `${URL}blog/getallBlog?category=lifestyle`
 
-		try {
-			const response = await axios({
-				method: 'get',
-				url: url
-			}).then((res) => {
-				console.log(res?.data?.blogs)
-				setLifestyleData(res?.data?.blogs)
+			try {
+				const response = await axios({
+					method: 'get',
+					url: url
+				}).then((res) => {
+					console.log(res?.data?.blogs)
+					setLifestyleData(res?.data?.blogs)
+					setIsLoading(false)
+				})
+
+			} catch (err) {
+				setErrormsg(err?.response?.data?.message)
+				console.error(errormsg);
 				setIsLoading(false)
-			})
+			}
 
-		} catch (err) {
-			setErrormsg(err?.response?.data?.message)
-			console.error(errormsg);
-			setIsLoading(false)
-		}
-
-	};
+		};
 
 		getLifestyleList();
 	}, [errormsg]);
@@ -97,7 +97,7 @@ export default function Lifestyle() {
 			{/* <!-- End Blog Section -->	 */}
 
 
-			<Blogdata Blogdata={lifestyleData} errorData={errormsg} imageData={lifestyleimage}/>
+			<Blogdata Blogdata={lifestyleData} errorData={errormsg} imageData={lifestyleimage} />
 			<Testimonal />
 
 

@@ -4,8 +4,58 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
+import axios from "axios"
+import { footerchema } from "../schemas"
+import { useFormik } from "formik"
+import moment from "moment"
+
+
 
 export default function Footer() {
+	const URL = process.env.BASE_URL
+	console.log(URL)
+	const [footerData, setFooterData] = useState();
+	const [errormsg, setErrormsg] = useState()
+	const initialValues = {
+		email: ""
+	};
+
+	const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+		useFormik({
+			initialValues: initialValues,
+			validationSchema: footerchema,
+
+			onSubmit: (values, action) => {
+				console.log(values);
+				let config = {                   //api
+					method: 'POST',
+					url: `${URL}newsletter/new`,
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					data: values
+				}
+				const getFooterList = async () => {
+					try {
+						const response = await axios
+							.request(config)
+							.then(function (response) {
+								console.log(response?.data)
+								action.resetForm();
+								// setFooterData(response)
+								// setIsLoading(false)
+							})
+					}
+					catch (err) {
+						// setErrormsg(err)
+						console.log(err);
+						// setIsLoading(false)
+					}
+				}
+				getFooterList();
+			}
+		})
 	const pathname = usePathname()
 	if (pathname !== "/login" && pathname !== "/forgotpassword" && pathname !== "/resetpassword" && pathname != "/signup" && pathname != "/changepassword")    //condition for hide show footer
 	{
@@ -14,27 +64,60 @@ export default function Footer() {
 
 				<footer className="footer-section">
 					<div className="container relative">
-
-
 						<div className="row">
 							<div className="col-lg-8">
 								<div className="subscription-form">
 									<h3 className="d-flex align-items-center">
 										<span className="me-1"><img src="./images/envelope-outline.svg" alt="Image" className="img-fluid" /></span><span>Subscribe to Newsletter</span></h3>
 
-									<form action="#" className="row g-3">
-										<div className="col-auto">
-											<input type="text" className="form-control" placeholder="Enter your name" />
+									<form onSubmit={handleSubmit} className="row">
+										<div className="col-md-3">
+											<div className="form-field d-flex align-items-center">
+												<label htmlFor="email">
+													<input
+														type="email"
+														autoComplete="off"
+														name="email"
+														id="email"
+														placeholder="email"
+														value={values.email}
+														onChange={handleChange}
+														onBlur={handleBlur}
+													/>
+													{errors.email && touched.email ? (
+														<p className="form-error">{errors.email}</p>
+													) : null}
+												</label>
+											</div>
 										</div>
-										<div className="col-auto">
-											<input type="email" className="form-control" placeholder="Enter your email" />
-										</div>
-										<div className="col-auto">
-											<button className="btn btn-primary">
-												<span className="nav-link" href="#"><FontAwesomeIcon icon={faPaperPlane} /></span>
+
+										<div className="col-md-2 btn">
+											<button type="submit" className="btn btn-primary">
+												<span className="nav-link" href="#">
+													<FontAwesomeIcon icon={faPaperPlane} /></span>
 											</button>
 										</div>
 									</form>
+
+									{/* 									
+									<form action="#" className="row g-3">
+									<div className="col-auto">
+											<input type="text" className="form-control" 
+											placeholder="Enter your name" />
+										</div>
+									<div className="col-auto"></div>
+
+
+											<input type="email" className="form-control"
+												placeholder="Enter your email" />
+										</div>
+										<div className="col-auto">
+											<button className="btn btn-primary">
+												<span className="nav-link"
+												href="#"><FontAwesomeIcon icon={faPaperPlane} /></span>
+											</button>
+										</div>
+									</form> */}
 
 								</div>
 							</div>
