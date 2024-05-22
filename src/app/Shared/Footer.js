@@ -91,7 +91,7 @@ export default function Footer() {
 											</div>
 										</div>
 
-										<div className="col-md-2 btn">
+										<div className="col-md-2 col-auto btn">
 											<button type="submit" className="btn btn-primary">
 												<span className="nav-link" href="#">
 													<FontAwesomeIcon icon={faPaperPlane} /></span>

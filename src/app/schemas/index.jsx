@@ -35,5 +35,5 @@ export const updateblogschema = Yup.object({
     category:Yup.string().min(3).required("please enter your category")
 })
 export const footerchema=Yup.object({
-    email: Yup.string().min(2).required("Please enter your email"),
+    email: Yup.string().min(5).required("Please enter your email"),
 })

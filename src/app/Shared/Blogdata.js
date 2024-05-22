@@ -17,7 +17,7 @@ export default function Blogdata(props) {
 
     const [isLoading, setIsLoading] = useState(true);
     const [getData, setgetData] = useState()
-    const [getError, setgetError] = useState()
+    const [getError, setgetError] = useState(true)   //error not came i.e. true
     const [isVisible, setVisible] = useState(true)
 
     useEffect(() => {
@@ -70,9 +70,9 @@ export default function Blogdata(props) {
                                             <img src={props?.imageData?.src} alt="Image"
                                                 className="img-fluid" /></Link> */}
 
-                                        <Link href="#" className="post-thumbnail">
+                                        <Link href="#" className="post-thumbnail zoom">
                                             <img src={getImageByCat(data?.category)}
-                                             alt="Image" className="img-fluid" /></Link>
+                                             alt="Image" className="img-fluid " /></Link>
 
                                         <div className="post-content-entry">
                                             <h3><Link href={`blogs/${data?._id}`}>{data?.blogTitle}</Link>

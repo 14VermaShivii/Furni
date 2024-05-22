@@ -12,6 +12,7 @@ import image from "../../../../../public/images/details5.jpg"
 import axios from "axios";
 import LoaderComp from "@/app/loader";
 
+
 export default function Blogid({ params }) {
     const [isLoading, setIsLoading] = useState(true);
     const [allblog, setAllblog] = useState();
@@ -66,7 +67,8 @@ export default function Blogid({ params }) {
                         <div className="col-12 col-sm-6 col-md-4 mb-5">
                             <div className="post-entry">
                                 <Link href="#" className="post-thumbnail">
-                                    <img src={getImageByCat(allblog?.category)} alt="Image" className="img-fluid" /></Link>
+                                    <img src={getImageByCat(allblog?.category)} alt="Image"
+                                     className="img-fluid" /></Link>
                                 <div className="post-content-entry">
                                     <h3><Link href={`${allblog._id}`}>{allblog?.blogTitle}</Link>
                                     </h3>
