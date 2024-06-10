@@ -21,9 +21,6 @@ export default function createblog() {
     const [profile, setProfile] = useState(profilepic)
     const handleInputChange = (event) => {
         setProfile(URL.createObjectURL(event.target.files[0]));
-
-        
-
        
     }
     const initialValues = {
@@ -91,8 +88,7 @@ export default function createblog() {
 
 
                             <form onSubmit={handleSubmit} className="row mt-3">
-                                <div className="col-md-12"><label className="labels"><h4><b>blogTitle
-                                </b></h4></label>
+                                <div className="col-md-12"><label className="labels"><h4><b>blogTitle </b></h4></label>
                                     < input
                                         type="text"
                                         autoComplete="off"

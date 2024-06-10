@@ -37,3 +37,12 @@ export const updateblogschema = Yup.object({
 export const footerchema=Yup.object({
     email: Yup.string().min(5).required("Please enter your email"),
 })
+export const editblogschema = Yup.object({
+    firstname:Yup.string().min(3).required("please enter your Name"),
+    lastname:Yup.string().min(3).required("please enter your Lastname"),
+    about:Yup.string().min(3).required("please enter your About Info"),
+    dob:Yup.string().required("please enter your Date of Birth"),
+    email: Yup.string().min(2).required("Please enter your email"),
+    profilePicture:Yup.string().min(3).required("please put your Profilepicture"),
+    timeline:Yup.string().min(3).required("please enter your timeline"),
+})

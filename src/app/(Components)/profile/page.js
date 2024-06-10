@@ -14,7 +14,7 @@ export default function profile() {
 
         const getProfileList = async () => {
 
-            const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
+            const url = `${URL}user/profile/65c23a145de2aebd592442cf`;
 
             try {
                 const response = await axios({
@@ -33,6 +33,12 @@ export default function profile() {
 
         getProfileList();
     }, []);
+    const backCover = {
+        backgroundImage:`url(${imgUrl}${data?.timeline})`,
+        fontSize:"50px",
+        backgroundSize:"cover",
+        backgroundRepeat:"no-repeat"
+    }
 
     return (
         <>
@@ -41,7 +47,7 @@ export default function profile() {
                 <div className="col-md-5 mx-auto">
                     {/* <!-- Profile widget -->  */}
                     <div className="bg-white shadow rounded overflow-hidden">
-                        <div className="px-4 pt-0 pb-5 cover">
+                        <div className="px-4 pt-0 pb-5 " style={backCover}>
                             <div className="media align-items-end profile-head">
                                 <div className="profile mr-3">
                                     <img src={`${imgUrl}${data?.profilePicture}`}
