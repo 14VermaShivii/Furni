@@ -16,6 +16,7 @@ export default function Editprofile() {
     const [result, setResult] = useState(null);
     const [errormsg, setErrormsg] = useState()
     const [profile, setProfile] = useState(profilepic)
+    const [data, setData] = useState()
     const handleInputChange = (event) => {
         setProfile(URL.createObjectURL(event.target.files[0]));
     }
@@ -66,7 +67,29 @@ export default function Editprofile() {
            
         },
     });
-    
+    useEffect(() => {
+
+        const getedit = async () => {
+
+            const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
+
+            try {
+                const response = await axios({
+                    method: 'get',
+                    url: url
+                }).then((res) => {
+                    setData(res?.data?.profile[0])
+                    console.log(res?.data?.profile[0])
+                })
+
+            } catch (err) {
+                setErrormsg(err)
+                console.error(err);
+            }
+        };
+
+        getedit();
+    }, []);
     // useEffect(() => {
     //     const geteditprofile = async () => {
 
@@ -90,16 +113,52 @@ export default function Editprofile() {
     //     };
     //     geteditprofile();
     // }, []);
+   //
+   
+//    *****************
+   const imgUrl = process.env.IMAGE_URL   //timline
+    useEffect(() => {
 
+        const getProfileList = async () => {
+
+            const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
+
+            try {
+                const response = await axios({
+                    method: 'get',
+                    url: url
+                }).then((res) => {
+                    setData(res?.data?.profile?.[0])
+                    console.log(res?.data?.profile?.[0])
+                })
+
+            } catch (err) {
+                setErrormsg(err?.response?.data?.message)
+                console.error(err);
+            }
+        };
+
+        getProfileList();
+    }, []);
+   
+   
+    const backCover = {
+        backgroundImage:`url(${imgUrl}${data?.timeline})`,
+        fontSize:"100px",
+        backgroundSize:"cover",
+        backgroundRepeat:"no-repeat"
+    }
 
     return (
         <>
-            <div className="Container">
+            <div className="Container ">
 
-                <Image alt="" className="text-center"
+                <Image alt="" className="text-center" 
+                // style={backCover}
                     width={1500}
                     height={400}
-                    src={timeline} />
+                    src={timeline}
+                     />
 
                 <input type="file" className="d-none" onChange={timelineChange} id="timelineimage" />
                 <label htmlFor="timelineimage">
@@ -176,7 +235,8 @@ export default function Editprofile() {
                                     placeholder="lastname" 
                                     value={values.lastname}
                                      onChange={handleChange}
-                                     onBlur={handleBlur}/>
+                                     onBlur={handleBlur}
+                                     />
                                      </div>
                                      {errors.lastname && touched.lastname ? (
                                     <p className="form-error">{errors.lastname}</p>
@@ -242,7 +302,7 @@ export default function Editprofile() {
                             </div> */}
                             <div className="mt-5 text-center">
                                 <button className="btn btn-primary profile-button"
-                                    type="submit">Save Profile</button></div>
+                                    type="submit">Update</button></div>
                         </div>
                     </div>
                     {/* <div className="col-md-4">

@@ -14,7 +14,7 @@ export default function profile() {
 
         const getProfileList = async () => {
 
-            const url = `${URL}user/profile/65c23a145de2aebd592442cf`;
+            const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
 
             try {
                 const response = await axios({
