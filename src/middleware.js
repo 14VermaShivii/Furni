@@ -1,7 +1,7 @@
 // import { NextRequest  } from "next/server";
 import { NextResponse } from "next/server"
 export function middleware(req) {
-  const loggedin = true  //not login
+  const loggedin = true//not login
   const { pathname } = req.nextUrl;
   // if(!loggedin){
   //     return NextResponse.redirect(

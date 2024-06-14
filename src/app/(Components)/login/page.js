@@ -8,16 +8,20 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'; //redirect page
 
-export default function login() {
+
+
+export default function login() {          
+   axios.defaults.withCredentials=true  //cookie
     const URL = process.env.BASE_URL
     const router = useRouter() //redirect page
-    // const notify = () => toast("Wow so easy!");
+
+
     const initialValues = {
         email: "",
         password: ""
     };
     //validation
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    const { values, errors, touched, handleBlur, handleChange ,handleSubmit} =   
         useFormik({
             initialValues: initialValues,
             validationSchema: loginschema,
@@ -37,21 +41,24 @@ export default function login() {
 
                 axios.request(config)
                     .then((response) => {
-                        toast.success(response.data.message, { position: "top-center", theme: "dark" });
-                        localStorage.setItem('authToken', response.data.token)      //token
+                        toast.success(response?.data?.message, { position: "top-center", theme: "dark" });
+                        // localStorage.setItem('authToken', response?.data?.token)      //token
                         // localStorage.getItem('authtoken')
                         router.push("/profile")         //redirect page
                         // NextResponse.redirect("profile")
                         action.resetForm();
                     })
                     .catch((error) => {
-                        toast.error(error.response.data.message, { theme: "dark" });
-                        const returnUrl = '/profile';
-                        router.push(returnUrl);
+                        toast.error(error?.response?.data?.message, { theme: "dark" });
+                        // const returnUrl = '/profile';
+                        // router.push('/profile');
                     });
 
             },
         });
+
+ 
+
 
     return (
         <>
@@ -102,7 +109,7 @@ export default function login() {
                     {/* <button onClick={notify}>Notify!</button> */}
                 </form>
                 <div className="text-center fs-6">
-                    <Link href={"/forgotpassword"}>Forget password?</Link> or 
+                    <Link href={"/forgotpassword"}>Forget password?</Link> or
                     <Link href={"/signup"}>Sign up</Link>
                 </div>
             </div>

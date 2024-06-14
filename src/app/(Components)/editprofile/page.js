@@ -33,10 +33,10 @@ export default function Editprofile() {
     };
     //******************** */
     const URL = process.env.BASE_URL
-
+ const url=`${URL}user/profile/${userId}`
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
-        initialValues: initialValues,
+        initialValues: result || initialValues,
         validationSchema: editblogschema,
 
         onSubmit: (values, action) => {
@@ -44,16 +44,18 @@ export default function Editprofile() {
             let config = {                   //api
                 method: 'get',
                 maxBodyLength: Infinity,
-                url:  `${URL}user/profile/${userId}`,
+                // url:  `${URL}user/profile/660559c9fe171a65fdeda840`,
+                
                 headers: {
                     'Content-Type': 'application/json'
+  
                 },
                 data: values
             };
             axios.request(config)
             .then((response) => {
                 toast.success(response?.data?.message,{position:"top-center",theme:"dark"});
-                localStorage.setItem('authtoke',response.data.token)
+                // localStorage.setItem('authtoke',response.data.token)
                 // localStorage.getItem('authtoken')
             
                 // NextResponse.redirect("profile")
@@ -70,9 +72,7 @@ export default function Editprofile() {
     useEffect(() => {
 
         const getedit = async () => {
-
             const url = `${URL}user/profile/660559c9fe171a65fdeda840`;
-
             try {
                 const response = await axios({
                     method: 'get',
@@ -87,7 +87,6 @@ export default function Editprofile() {
                 console.error(err);
             }
         };
-
         getedit();
     }, []);
     // useEffect(() => {
@@ -128,7 +127,7 @@ export default function Editprofile() {
                     method: 'get',
                     url: url
                 }).then((res) => {
-                    setData(res?.data?.profile?.[0])
+                    setResult(res?.data?.profile?.[0])
                     console.log(res?.data?.profile?.[0])
                 })
 

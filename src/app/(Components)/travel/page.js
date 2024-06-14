@@ -25,12 +25,12 @@ export default function Travel() {
 					method: 'get',
 					url: url
 				}).then((res) => {
-					console.log(res.data.blogs)
-					setTravelData(res.data.blogs)
+					console.log(res?.data?.blogs)
+					setTravelData(res?.data?.blogs)
 				})
 
 			} catch (err) {
-				setErrormsg(err.response.data.message)
+				setErrormsg(err.response?.data?.message)
 				console.error(errormsg);
 			}
 		};

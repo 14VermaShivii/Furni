@@ -49,7 +49,7 @@ export default function createblog() {
                 axios.request(config)
                 .then((response) => {
                     toast.success(response?.data?.message,{position:"top-center",theme:"dark"});
-                    localStorage.setItem('authtoke',response.data.token)
+                    // localStorage.setItem('authtoke',response.data.token)
                     // localStorage.getItem('authtoken')
                 
                     // NextResponse.redirect("profile")

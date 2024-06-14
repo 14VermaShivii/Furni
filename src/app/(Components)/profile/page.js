@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function profile() {
-    const [profileData, setProfileData] = useState();
+    // const [profileData, setProfileData] = useState();
     const [errormsg, setErrormsg] = useState()
     const [data, setData] = useState()
     const URL = process.env.BASE_URL

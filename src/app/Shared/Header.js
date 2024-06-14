@@ -3,54 +3,46 @@ import Link from "next/link"
 import React, { useEffect } from 'react';
 import { useState } from "react";
 import axios from "axios"
-// import Image from "next/image";
-// import styles from "./page.module.css";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-// import Myblogs from "../(Components)/profile/myblogs/page";
-import myblogs from "../(Components)/profile/myblogs/page";
-import profile from "../(Components)/profile/page";
-
-
-
-
 export default function Header() {
+
     const [Islogin, setIslogin] = useState(true)
 
     const pathname = usePathname()
     // console.log(pathname)
     const [isOpened, setIsOpened] = useState(false);
     // const [isdisabled, setDisabled] = useState(true)
-    const URL=process.env.BASE_URL
-    const[errormsg,setErrormsg]=useState()
-    const [enable,setEnable]=useState()
-    const[value, setValue] = useState()
-const search=async()=>{
-    console.log("search working")
-    const url=`${URL}blog/search?q=${value}`
-    try{
-        const response = await axios({
-            method:'get',
-            url:url
-        }).then((res)=>{
-            console.log(res)
-        });
-    }catch(error){
-        setErrormsg(error)
-        console.log(error)
-    }
-};
-    const handleChange=(event)=>{
+    const URL = process.env.BASE_URL
+    const [errormsg, setErrormsg] = useState()
+    const [enable, setEnable] = useState()
+    const [value, setValue] = useState()
+    const search = async () => {
+        console.log("search working")
+        const url = `${URL}blog/search?q=${value}`
+        try {
+            const response = await axios({
+                method: 'get',
+                url: url
+            }).then((res) => {
+                console.log(res)
+            });
+        } catch (error) {
+            setErrormsg(error)
+            console.log(error)
+        }
+    };
+    const handleChange = (event) => {
         // console.log(event.target.value)
-        const len=event.target.value
+        const len = event.target.value
         // console.log(event.target.value)
-        if(len.length>=2){
+        if (len.length >= 2) {
             setValue(len)
             setEnable(false)
         }
-        else{
+        else {
             setEnable(true)
             setValue(len)
         }
@@ -72,12 +64,34 @@ const search=async()=>{
             setIslogin(false)
         }
     });
-    //logout
+    //logout*********************
     const router = useRouter()
+    // const [data, setData] = useState()
     function logout() {
-        localStorage.removeItem("authToken")
+
+        const getLogoutList = async () => {
+
+            const url = `${URL}user/logout`;
+
+            try {
+                const response = await axios({
+                    method: 'get',
+                    url: url
+                }).then((response) => {
+
+                    console.log(response)
+                })
+
+            } catch (err) {
+
+                console.error(err);
+            }
+        };
+        getLogoutList();
         router.push("/")
     }
+    // }
+
     return (
         <>
             <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation
@@ -156,14 +170,14 @@ const search=async()=>{
                             <div className="row ">
                                 <div className="col-md-10">
 
-                                    <input type="search" onChange={handleChange} className="img-fluid form-control rounded-pill rounded-circle" placeholder="Search.." aria-label="Search" onKeyDown={e=>{
-                                        if(e.key==="Enter"){
+                                    <input type="search" onChange={handleChange} className="img-fluid form-control rounded-pill rounded-circle" placeholder="Search.." aria-label="Search" onKeyDown={e => {
+                                        if (e.key === "Enter") {
                                             router.push(`/search/?q=${decodeURIComponent(value)}`)
                                         }
                                     }} />
                                 </div>
                                 <div className="col-md-1">
-                                   <button onClick={search} disabled={enable} className="onclick btn btn-primary">search</button>
+                                    <button onClick={search} disabled={enable} className="onclick btn btn-primary">search</button>
                                 </div>
                                 <div className="col-md-1">
                                     <button className="nav-link" onClick={toggle}><FontAwesomeIcon
