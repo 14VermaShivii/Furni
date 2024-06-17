@@ -57,7 +57,7 @@ export default function Header() {
         const getToken = localStorage.getItem("authToken");
 
         // console.log(getToken)
-        if (getToken) {
+        if (!getToken) {
             setIslogin(true)
         }
         else {
