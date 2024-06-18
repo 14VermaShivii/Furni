@@ -34,7 +34,7 @@ export default function Editprofile() {
     //******************** */
     const URL = process.env.BASE_URL
     console.log(URL)
-    const url = `${URL}user/profile`
+    const url = `${URL}user/profile/${userId}`
     useEffect(() => {
 
         const getedit = async () => {

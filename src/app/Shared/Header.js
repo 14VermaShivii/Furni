@@ -7,10 +7,12 @@ import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
+import Cookies from "js-cookie";
+
 export default function Header() {
 
     const [Islogin, setIslogin] = useState(true)
-
     const pathname = usePathname()
     // console.log(pathname)
     const [isOpened, setIsOpened] = useState(false);
@@ -54,8 +56,9 @@ export default function Header() {
     };
 
     useEffect(() => {
-        const getToken = localStorage.getItem("authToken");
-
+        // const getToken = localStorage.getItem("authToken");
+        const getToken = Cookies.get("jwt");
+        console.log(getToken)
         // console.log(getToken)
         if (!getToken) {
             setIslogin(true)
@@ -72,125 +75,127 @@ export default function Header() {
         const getLogoutList = async () => {
 
             const url = `${URL}user/logout`;
-
             try {
-                const response = await axios({
-                    method: 'get',
-                    url: url
-                }).then((response) => {
-
-                    console.log(response)
+                const responseJson = await axios.get(
+                    url,{withCredentials:true} //cookie remove 
+                ).then((response) => {
+                    console.log(response.data.message)
+                    toast.success(response?.data?.message, { position: "top-center", theme: "dark" });
                 })
 
-            } catch (err) {
-
+            } catch (error) {
+                toast.error(error?.response?.data?.message, { theme: "dark" });
                 console.error(err);
             }
         };
         getLogoutList();
         router.push("/")
     }
-    // }
-
-    return (
-        <>
-            <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation
+   
+        return (
+            <>
+                <nav className="custom-navbar navbar navbar navbar-expand-md " arial-label="Furni navigation
              bar">
 
-                <div className="container-fluid">
-                    <Link className="navbar-brand" href={"/"}>Furni<span>.</span></Link>
+                    <div className="container-fluid">
+                        <Link className="navbar-brand" href={"/"}>Furni<span>.</span></Link>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div className="collapse navbar-collapse" id="navbarsFurni">
-                        <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                        <div className="collapse navbar-collapse" id="navbarsFurni">
+                            <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 
-                            <li className={pathname === "/" ? "active" : " "}>
-                                <Link className="nav-link" href={"/"}>Home</Link></li>
-                            <li className={pathname === "/blog" ? "active" : " "}>
-                                <Link className="nav-link" href={"/blogs"}>Blogs</Link></li>
+                                <li className={pathname === "/" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/"}>Home</Link></li>
+                                <li className={pathname === "/blog" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/blogs"}>Blogs</Link></li>
 
-                            {/* <li className={pathname === "/details" ? "active" : " "}>
+                                {/* <li className={pathname === "/details" ? "active" : " "}>
                                 <Link className="nav-link" href={"/details"}>Details</Link></li> */}
 
-                            <li className={pathname === "/fashion" ? "active" : " "}>
-                                <Link className="nav-link" href={"/fashion"}>Fashion</Link></li>
-                            <li className={pathname === "/lifestyle" ? "active" : " "}>
-                                <Link className="nav-link" href={"/lifestyle"}>Lifestyle</Link></li>
-                            <li className={pathname === "/food" ? "active" : " "}>
-                                <Link className="nav-link" href={"/food"}>Food</Link></li>
-                            <li className={pathname === "/tech" ? "active" : " "}>
-                                <Link className="nav-link" href={"/tech"}>Tech</Link></li>
-                            <li className={pathname === "/travel" ? "active" : " "}>
-                                <Link className="nav-link" href={"/travel"}>Travel</Link></li>
-                            <li className={pathname === "/contact" ? "active" : " "}>
-                                <Link className="nav-link" href={"/contact"}>Contact</Link></li>
-                            <li className={pathname === "/profile" ? "active" : " "}>
-                                <Link className="nav-link" href={"/profile"}>Profile</Link></li>
+                                <li className={pathname === "/fashion" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/fashion"}>Fashion</Link></li>
+                                <li className={pathname === "/lifestyle" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/lifestyle"}>Lifestyle</Link></li>
+                                <li className={pathname === "/food" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/food"}>Food</Link></li>
+                                <li className={pathname === "/tech" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/tech"}>Tech</Link></li>
+                                <li className={pathname === "/travel" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/travel"}>Travel</Link></li>
+                                <li className={pathname === "/contact" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/contact"}>Contact</Link></li>
+                                <li className={pathname === "/profile" ? "active" : " "}>
+                                    <Link className="nav-link" href={"/profile"}>Profile</Link></li>
 
-                        </ul>
-                        <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
-                            {/* <li><Link className="nav-link" href={"/login"}>
+                            </ul>
+                            <ul className="custom-navbar-cta navbar-nav  mb-2 mb-md-0 ms-5">
+                                {/* <li><Link className="nav-link" href={"/login"}>
                                 <img src="./images/user.svg" /></Link></li> */}
-                            {!Islogin ? <li><Link className="nav-link" href={"/login"}>
-                                <img src="./images/user.svg" /></Link></li> : <div className="dropdown">
-                                <a className="btn btn-secondary dropdown-toggle"
-                                    href="#" role="button" id="dropdownMenuLink"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Shivani
-                                </a>
+                                {!Islogin ? <li><Link className="nav-link" href={"/login"}>
+                                    <img src="./images/user.svg" /></Link></li> : <div className="dropdown">
+                                    <a className="btn btn-secondary dropdown-toggle"
+                                        href="#" role="button" id="dropdownMenuLink"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Shivani
+                                    </a>
 
-                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><Link className="dropdown-item" href="/profile/myblogs">My blogs
-                                    </Link></li>
-                                    <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><Link className="dropdown-item" href="/profile/myblogs">My blogs
+                                        </Link></li>
+                                        <li><button className="dropdown-item"
+                                            onClick={logout}>Logout</button></li>
 
-                                </ul>
-                            </div>
-                            }
+                                    </ul>
 
-
-                            <li><button className="nav-link" onClick={toggle}><FontAwesomeIcon
-                                icon={faMagnifyingGlass} /></button>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-
-            </nav>
-
-
-            {isOpened && (
-                <div className="">
-                    <div className="container-fluid">
-                        <div className="container search">
-                            <div className="row ">
-                                <div className="col-md-10">
-
-                                    <input type="search" onChange={handleChange} className="img-fluid form-control rounded-pill rounded-circle" placeholder="Search.." aria-label="Search" onKeyDown={e => {
-                                        if (e.key === "Enter") {
-                                            router.push(`/search/?q=${decodeURIComponent(value)}`)
-                                        }
-                                    }} />
                                 </div>
-                                <div className="col-md-1">
-                                    <button onClick={search} disabled={enable} className="onclick btn btn-primary">search</button>
-                                </div>
-                                <div className="col-md-1">
-                                    <button className="nav-link" onClick={toggle}><FontAwesomeIcon
-                                        icon={faXmark} /></button>
-                                </div>
-                            </div>
+                                }
+
+
+                                <li><button className="nav-link" onClick={toggle}><FontAwesomeIcon
+                                    icon={faMagnifyingGlass} /></button>
+                                </li>
+
+                            </ul>
                         </div>
-
                     </div>
-                </div>
-            )}
 
-        </>
-    )
+                </nav>
+
+
+                {isOpened && (
+                    <div className="">
+                        <div className="container-fluid">
+                            <div className="container search">
+                                <div className="row ">
+                                    <div className="col-md-10">
+
+                                        <input type="search" onChange={handleChange}
+                                            className="img-fluid form-control rounded-pill rounded-circle"
+                                            placeholder="Search.." aria-label="Search" onKeyDown={e => {
+                                                if (e.key === "Enter") {
+                                                    router.push(`/search/?q=${decodeURIComponent(value)}`)
+                                                }
+                                            }} />
+                                    </div>
+                                    <div className="col-md-1">
+                                        <button onClick={search} disabled={enable}
+                                            className="onclick btn btn-primary">search</button>
+                                    </div>
+                                    <div className="col-md-1">
+                                        <button className="nav-link" onClick={toggle}><FontAwesomeIcon
+                                            icon={faXmark} /></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                )}
+
+            </>
+        )
 
 }
