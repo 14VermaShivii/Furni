@@ -34,7 +34,7 @@ export default function Editprofile() {
     //******************** */
     const URL = process.env.BASE_URL
     console.log(URL)
-    const url = `${URL}user/profile/${userId}`
+    const url = `${URL}user/profile/editprofir/${userId}`
     useEffect(() => {
 
         const getedit = async () => {
@@ -42,7 +42,7 @@ export default function Editprofile() {
             try {
                 const response = await axios({
                     method: 'get',
-                    url: `${URL}user/profile?=${userId}`,
+                    url: `${URL}user/profile/?=${userId}`,
                     //    url:url,
                 }).then((res) => {
                     setData(res?.data?.profile[0])

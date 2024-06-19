@@ -60,7 +60,7 @@ export default function Header() {
         const getToken = Cookies.get("jwt");
         console.log(getToken)
         // console.log(getToken)
-        if (!getToken) {
+        if (getToken) {
             setIslogin(true)
         }
         else {
