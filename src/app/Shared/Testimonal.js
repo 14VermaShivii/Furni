@@ -17,7 +17,7 @@ export default function Testimonal() {
 
 										<div className="testimonial-block text-center">
 											<blockquote className="mb-5">
-												<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												<p>&ldquo;Blogger is a quality blogging solution that makes it easy to quickly set up a blog, create posts and publish content. Its user dashboard is intuitive and includes everything users need to build and manage their blog, such as performance stats and earnings..&rdquo;</p>
 											</blockquote>
 
 											<div className="author-info">
@@ -25,7 +25,7 @@ export default function Testimonal() {
 													<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
 												</div>
 												<h3 className="font-weight-bold">Maria Jones</h3>
-												<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span><br/>
+												<span className="position d-block mb-3">CEO, Co-Founder, India.</span><br/>
 											</div>
 										</div>
 
@@ -40,7 +40,7 @@ export default function Testimonal() {
 
 										<div className="testimonial-block text-center">
 											<blockquote className="mb-5">
-												<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												<p>&ldquo;Technically the answer is yes, it is totally possible to start a blog for free. However, starting a blog for free is really not a great idea. There are a number of big downsides to starting a free blog also known as a 'hosted' blog.&rdquo;</p>
 											</blockquote>
 
 											<div className="author-info">
@@ -48,7 +48,7 @@ export default function Testimonal() {
 													<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
 												</div>
 												<h3 className="font-weight-bold">Maria Jones</h3>
-												<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span><br />
+												<span className="position d-block mb-3">CEO, Co-Founder, India.</span><br />
 											</div>
 										</div>
 
@@ -63,7 +63,7 @@ export default function Testimonal() {
 
 										<div className="testimonial-block text-center">
 											<blockquote className="mb-5">
-												<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												<p>&ldquo;Blog titles have the power to shape a reader's first impression of your article. They're often the first thing readers see on Google or a social media post promoting your content—and often what convinces them (or scare them away) from clicking into your site..&rdquo;</p>
 											</blockquote>
 
 											<div className="author-info">
@@ -71,7 +71,7 @@ export default function Testimonal() {
 													<img src="images/person-1.png" alt="Maria Jones" className="img-fluid" />
 												</div>
 												<h3 className="font-weight-bold">Maria Jones</h3>
-												<span className="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span><br />
+												<span className="position d-block mb-3">CEO, Co-Founder, India.</span><br />
 											</div>
 										</div>
 

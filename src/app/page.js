@@ -39,18 +39,18 @@ export default function Home() {
 
 						{/* <!-- Start Column 1 --> */}
 						<div className="col-md-12 col-lg-3 mb-5 mb-lg-0">
-							<h2 className="mb-4 section-title">Crafted with excellent material.</h2>
-							<p className="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. </p>
-							<p><a href="shop.html" className="btn">Explore</a></p>
+							<h2 className="mb-4 section-title"> An online platform where one or more individuals post </h2>
+							<p className="mb-4">An informational website consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order so that the most recent post appears first, at the top of the web page. </p>
+							<p><a href="shop.html" className="btn btn-primary">Explore</a></p>
 						</div>
 						{/* <!-- End Column 1 --> */}
 
 						{/* <!-- Start Column 2 --> */}
 						<div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 							<a className="product-item" href="cart.html">
-								<img src="images/product-1.png" className="img-fluid product-thumbnail" />
-								<h3 className="product-title">Nordic Chair</h3>
-								<strong className="product-price">$50.00</strong>
+								<img src="images/blogpage1.jpg" className="img-fluid product-thumbnail" />
+								<h3 className="product-title">Nordic maale</h3>
+								<strong className="product-price">$500.00</strong>
 
 								<span className="icon-cross">
 									<img src="images/cross.svg" className="img-fluid" />
@@ -62,9 +62,9 @@ export default function Home() {
 						{/* <!-- Start Column 3 --> */}
 						<div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 							<a className="product-item" href="cart.html">
-								<img src="images/product-2.png" className="img-fluid product-thumbnail" />
-								<h3 className="product-title">Kruzo Aero Chair</h3>
-								<strong className="product-price">$78.00</strong>
+								<img src="images/blogging2.jpg" className="img-fluid product-thumbnail" />
+								<h3 className="product-title">Browse other blogs for inspiration.</h3>
+								<strong className="product-price">$780.00</strong>
 
 								<span className="icon-cross">
 									<img src="images/cross.svg" className="img-fluid" />
@@ -76,9 +76,9 @@ export default function Home() {
 						{/* <!-- Start Column 4 --> */}
 						<div className="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 							<a className="product-item" href="cart.html">
-								<img src="images/product-3.png" className="img-fluid product-thumbnail" />
-								<h3 className="product-title">Ergonomic Chair</h3>
-								<strong className="product-price">$43.00</strong>
+								<img src="images/blogging3.jpg" className="img-fluid product-thumbnail" />
+								<h3 className="product-title">Cater to emotions</h3>
+								<strong className="product-price">$430.00</strong>
 
 								<span className="icon-cross">
 									<img src="images/cross.svg" className="img-fluid" />
@@ -98,7 +98,7 @@ export default function Home() {
 					<div className="row justify-content-between">
 						<div className="col-lg-6">
 							<h2 className="section-title">Why Choose Us</h2>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+							<p>Blogging consists of creating posts and publishing them on the internet for people to read. It can be anything from travel to fashion. These posts can be about anything the blogger desires, and all posts are archived and sorted into categories.</p>
 
 							<div className="row my-5">
 								<div className="col-6 col-md-6">
@@ -146,7 +146,7 @@ export default function Home() {
 
 						<div className="col-lg-5">
 							<div className="img-wrap">
-								<img src="images/why-choose-us-img.jpg" alt="Image" className="img-fluid" />
+								<img src="images/bloging5.jpg" alt="Image" className="img-fluid" />
 							</div>
 						</div>
 
@@ -161,22 +161,23 @@ export default function Home() {
 					<div className="row justify-content-between">
 						<div className="col-lg-7 mb-5 mb-lg-0">
 							<div className="imgs-grid">
-								<div className="grid grid-1"><img src="images/img-grid-1.jpg" alt="Untree.co" /></div>
-								<div className="grid grid-2"><img src="images/img-grid-2.jpg" alt="Untree.co" /></div>
-								<div className="grid grid-3"><img src="images/img-grid-3.jpg" alt="Untree.co" /></div>
+								<div className="grid grid-1"><img src="images/bloging6.jpg" alt="Untree.co" /></div>
+								<div className="grid grid-2"><img src="images/blogging3.jpg" alt="Untree.co" /></div>
+								<div className="grid grid-3"><img src="images/bloging7.jpg" alt="Untree.co" /></div>
 							</div>
 						</div>
 						<div className="col-lg-5 ps-lg-5">
-							<h2 className="section-title mb-4">We Help You Make Modern Interior Design</h2>
-							<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+							<h2 className="section-title mb-4">We Help You </h2>
+							<p>
+							That's because there is so much content and information on the internet. A blog helps you convert website traffic into potential leads, convert them into subscribers and social media followers, and allow you to reach out to them later.</p>
 
 							<ul className="list-unstyled custom-list my-4">
-								<li>Donec vitae odio quis nisl dapibus malesuada</li>
-								<li>Donec vitae odio quis nisl dapibus malesuada</li>
-								<li>Donec vitae odio quis nisl dapibus malesuada</li>
-								<li>Donec vitae odio quis nisl dapibus malesuada</li>
+								<li>Helps your audience achieve what they want.</li>
+								<li>Joining an ad network is one of the most common ways that bloggers make money.</li>
+								<li>Divide your blog goal(s) into actionable plans for the year's quarters.</li>
+								<li>People absolutely still read blogs regularly</li>
 							</ul>
-							<p><a herf="#" className="btn">Explore</a></p>
+							<p><a herf="#" className="btn btn-primary">Explore</a></p>
 						</div>
 					</div>
 				</div>
@@ -191,11 +192,11 @@ export default function Home() {
 						<div className="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 							<div className="product-item-sm d-flex">
 								<div className="thumbnail">
-									<img src="images/product-1.png" alt="Image" className="img-fluid" />
+									<img src="images/Blog.jpg" alt="Image" className="img-fluid" />
 								</div>
 								<div className="pt-3">
-									<h3>Nordic Chair</h3>
-									<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+									<h3>Relevance</h3>
+									<p>Your blog name should be relevant to the topic of your blog.  </p>
 									<p><a href="#">Read More</a></p>
 								</div>
 							</div>
@@ -204,11 +205,11 @@ export default function Home() {
 						<div className="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 							<div className="product-item-sm d-flex">
 								<div className="thumbnail">
-									<img src="images/product-2.png" alt="Image" className="img-fluid" />
+									<img src="images/blogging4.jpg" alt="Image" className="img-fluid" />
 								</div>
 								<div className="pt-3">
-									<h3>Kruzo Aero Chair</h3>
-									<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+									<h3>Memorable</h3>
+									<p>Good blog names need to be memorable so that people will be more likely to find your blog again if they enjoy your content. </p>
 									<p><a href="#">Read More</a></p>
 								</div>
 							</div>
@@ -217,11 +218,11 @@ export default function Home() {
 						<div className="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 							<div className="product-item-sm d-flex">
 								<div className="thumbnail">
-									<img src="images/product-3.png" alt="Image" className="img-fluid" />
+									<img src="images/blogging1.jpg" alt="Image" className="img-fluid" />
 								</div>
 								<div className="pt-3">
-									<h3>Ergonomic Chair</h3>
-									<p>Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio </p>
+									<h3>Unique</h3>
+									<p>Your blog name should be unique and stand out from other blogs in your niche. </p>
 									<p><a href="#">Read More</a></p>
 								</div>
 							</div>
@@ -251,10 +252,10 @@ export default function Home() {
 
 						<div className="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 							<div className="post-entry">
-								<a href="#" className="post-thumbnail"><img src="images/post-1.jpg" alt="Image"
+								<a href="#" className="post-thumbnail"><img src="images/unique1.jpg" alt="Image"
 									className="img-fluid" /></a>
 								<div className="post-content-entry">
-									<h3><a href="#">First Time Home Owner Ideas</a></h3>
+									<h3><a href="#"> Consider your target audience.</a></h3>
 									<div className="meta">
 										<span>by <a href="#">Kristin Watson</a></span> <span>on
 											<a href="#">Dec 19, 2021</a></span>
@@ -265,10 +266,10 @@ export default function Home() {
 
 						<div className="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 							<div className="post-entry">
-								<a href="#" className="post-thumbnail"><img src="images/post-2.jpg" alt="Image"
+								<a href="#" className="post-thumbnail"><img src="images/unique4.jpg" alt="Image"
 									className="img-fluid" /></a>
 								<div className="post-content-entry">
-									<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+									<h3><a href="#"> Do your research.</a></h3>
 									<div className="meta">
 										<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
 									</div>
@@ -278,10 +279,10 @@ export default function Home() {
 
 						<div className="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 							<div className="post-entry">
-								<a href="#" className="post-thumbnail"><img src="images/post-3.jpg" alt="Image"
+								<a href="#" className="post-thumbnail"><img src="images/unique3.jpg" alt="Image"
 									className="img-fluid" /></a>
 								<div className="post-content-entry">
-									<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+									<h3><a href="#">Think about your message.</a></h3>
 									<div className="meta">
 										<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
 									</div>

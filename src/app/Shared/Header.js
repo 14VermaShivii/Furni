@@ -57,7 +57,7 @@ export default function Header() {
 
     useEffect(() => {
         // const getToken = localStorage.getItem("authToken");
-        const getToken = Cookies.get("jwt");
+        const getToken = Cookies.get("jwt");                 //token get
         console.log(getToken)
         // console.log(getToken)
         if (getToken) {

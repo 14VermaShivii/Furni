@@ -1,13 +1,16 @@
 // import { NextRequest  } from "next/server";
 import { NextResponse } from "next/server"
+// import { useEffect } from "react";
 export function middleware(req) {
-  const loggedin = true                     //not login
+  const loggedin = req.cookies.has('jwt')    
+  console.log(loggedin)             //not login
   const { pathname } = req.nextUrl;
   // if(!loggedin){
   //     return NextResponse.redirect(
   //         new URL('/',request.url)
   //     )
   // }
+ 
 
   if (loggedin && pathname === '/login' || pathname === '/signup') {
     console.log("login page")
@@ -19,41 +22,44 @@ export function middleware(req) {
     console.log("not login")
     return NextResponse.redirect(new URL('/', req.url));
   }
-}
-// return NextResponse.next();
+
+  
+ 
+ }
+//  return NextResponse.next();
 
 
 // }
 
-export const config = {
+ export const config = {
   matcher: [
-  //  "profile",
-  //  "login",
-  //  "createblog",
-  //  "signup",
-  //  "changepassword"
+ "/profile",
+  "/login",
+  "/createblog",
+ "/signup",
+ "/changepassword"
   ]
-}
+ }
 
 //sample
-// import  { NextResponse } from 'next/server'
- 
-// export function middleware(request) {
-//   const currentUser = request.cookies.get('currentUser')?.value
- 
-//   if (currentUser && !request.nextUrl.pathname.startsWith('/dashboard')) {
-//     return Response.redirect(new URL('/dashboard', request.url))
+// import { NextResponse } from "next/server";
+// // import jwt from "jsonwebtoken";
+
+// export async function middleware(req) {
+//   const token = req ? req.cookies?.token : null;
+//   let userId=null;
+//    if (token) {
+//     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+//     userId = decodedToken?.issuer;
 //   }
- 
-//   if (!currentUser && !request.nextUrl.pathname.startsWith('/login')) {
-//     return Response.redirect(new URL('/login', request.url))
+//   const { pathname } = req.nextUrl;
+//   // if user sends request to "/api/login", it has no token. so let the request pass
+//   if (
+//     pathname.includes("/api/auth/login") || userId
+//   ) {
+//     return NextResponse.next();
 //   }
-// }
- 
-// export const config = {
-//   matcher: ["profile",
-//     "login",
-//    "createblog",
-//    "signup",
-//     "changepassword"],
+//   if (!token && pathname !== "/login") {
+//     return NextResponse.redirect("/login");
+//   }
 // }
